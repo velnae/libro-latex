@@ -1,0 +1,225 @@
+% Tipografía y página
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{lmroman10-regular.otf}[
+  BoldFont=lmroman10-bold.otf,
+  ItalicFont=lmroman10-italic.otf,
+  BoldItalicFont=lmroman10-bolditalic.otf
+]
+\setsansfont{lmsans10-regular.otf}[
+  BoldFont=lmsans10-bold.otf,
+  ItalicFont=lmsans10-oblique.otf,
+  BoldItalicFont=lmsans10-boldoblique.otf
+]
+\setmonofont{lmmono10-regular.otf}[
+  BoldFont=lmmonolt10-bold.otf,
+  ItalicFont=lmmono10-italic.otf,
+  Ligatures=NoCommon
+]
+
+\usepackage{babel}
+\IfFileExists{spanish.ldf}{%
+  \babelprovide[main,import=es]{spanish}%
+}{%
+  \babelprovide[main,import=es]{spanish}%
+}
+\setlocalecaption{spanish}{contents}{Índice general}
+\setlocalecaption{spanish}{listtable}{Índice de tablas}
+\setlocalecaption{spanish}{listfigure}{Índice de figuras}
+\setlocalecaption{spanish}{table}{Tabla}
+\setlocalecaption{spanish}{appendix}{Anexo}
+
+\usepackage{amsmath}
+\usepackage{unicode-math}
+\setmathfont{latinmodern-math.otf}
+\usepackage[left=27mm,right=26mm,top=25mm,bottom=27mm,headheight=15pt]{geometry}
+\usepackage[protrusion=true,expansion=false]{microtype}
+\usepackage{ragged2e}
+\linespread{1.07}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{.48em plus .12em minus .08em}
+\setlength{\emergencystretch}{1.3em}
+\clubpenalty=7500
+\widowpenalty=7500
+\raggedbottom
+
+% Paleta editorial
+\usepackage[table]{xcolor}
+\definecolor{Tinta}{HTML}{192C3D}
+\definecolor{Azul}{HTML}{173B52}
+\definecolor{Verde}{HTML}{086D65}
+\definecolor{Gris}{HTML}{466074}
+\definecolor{Linea}{HTML}{CAD9DF}
+\definecolor{Papel}{HTML}{F2F7F8}
+\definecolor{Suave}{HTML}{E4F2EF}
+
+% Jerarquía y encabezados
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\setcounter{secnumdepth}{1}
+\setcounter{tocdepth}{1}
+\newcommand{\EtiquetaCapitulo}{%
+  \sffamily\bfseries\small\color{Verde}\MakeUppercase{\chaptertitlename}\enspace\thechapter}
+\titleformat{\chapter}[display]
+  {\sffamily\bfseries\Huge\color{Azul}\RaggedRight}
+  {\EtiquetaCapitulo}{.7ex}{}[\vspace{.6ex}{\color{Linea}\titlerule[.65pt]}]
+\titleformat{name=\chapter,numberless}[display]
+  {\sffamily\bfseries\Huge\color{Azul}\RaggedRight}
+  {}{0pt}{}[\vspace{.6ex}{\color{Linea}\titlerule[.65pt]}]
+\titlespacing*{\chapter}{0pt}{1.3ex}{2.2ex}
+\titleformat{\section}
+  {\sffamily\bfseries\Large\color{Azul}\RaggedRight}
+  {\textcolor{Verde}{\thesection}}{.7em}{}
+\titlespacing*{\section}{0pt}{2.7ex plus .4ex}{.9ex}
+\titleformat{\subsection}
+  {\sffamily\bfseries\large\color{Azul}\RaggedRight}
+  {}{0pt}{}
+\titlespacing*{\subsection}{0pt}{1.9ex plus .4ex}{.55ex}
+
+\newcommand{\NotaParte}{}
+\titleformat{\part}[display]
+  {\sffamily\bfseries\fontsize{38}{43}\selectfont\color{Azul}\RaggedRight}
+  {\color{Verde}\normalfont\sffamily\bfseries\large\MakeUppercase{\partname}\enspace\thepart}
+  {1.5ex}{}[%
+    \par\vspace{.8ex}{\color{Verde}\rule{19mm}{1.1pt}}\par
+    \vspace{1.6ex}%
+    \normalfont\Large\color{Gris}\NotaParte]
+\newcommand{\ParteLibro}[2]{\renewcommand{\NotaParte}{#2}\part{#1}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\sffamily\footnotesize\color{Azul}\TituloLibro}
+\fancyhead[R]{\sffamily\footnotesize\color{Gris}\nouppercase{\leftmark}}
+\fancyfoot[R]{\sffamily\footnotesize\color{Azul}\thepage}
+\renewcommand{\headrule}{\vskip-1.5pt\hbox to\headwidth{\color{Linea}\leaders\hrule height.45pt\hfill}}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\fancypagestyle{plain}{%
+  \fancyhf{}\fancyfoot[R]{\sffamily\footnotesize\color{Azul}\thepage}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\headrule}{}}
+
+\usepackage{enumitem}
+\setlist{topsep=.28em,itemsep=.2em,parsep=0pt,partopsep=0pt,leftmargin=1.65em}
+\usepackage{needspace}
+\usepackage[most]{tcolorbox}
+\newtcolorbox{resultados}[1][Resultados de aprendizaje]{
+  enhanced, breakable, colback=Suave, colframe=Suave, boxrule=0pt, arc=1.2mm,
+  borderline west={1.1pt}{0pt}{Verde}, left=3.6mm, right=3.6mm, top=2.0mm,
+  bottom=2.0mm, before skip=.9em, after skip=.9em,
+  title={#1}, fonttitle=\sffamily\bfseries\small, coltitle=Verde,
+  colbacktitle=Suave, toptitle=2mm, bottomtitle=0mm
+}
+
+% Cuadros, figuras, notas y referencias
+\usepackage{graphicx}
+\usepackage{caption}
+\DeclareCaptionFont{rótulo}{\sffamily\bfseries\color{Azul}}
+\captionsetup{font=small,labelfont=rótulo,labelsep=period,
+  textfont=bf,justification=raggedright,singlelinecheck=false}
+\captionsetup[table]{position=above,skip=5pt}
+\captionsetup[figure]{position=below,skip=7pt}
+\counterwithout{table}{chapter}
+\counterwithout{figure}{chapter}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{longtable}
+\newlength{\AnchoTabla}
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1\AnchoTabla}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1\AnchoTabla}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1\AnchoTabla}}
+\newenvironment{tablalibro}[2]{%
+  \par\needspace{5.3\baselineskip}\begingroup\small
+  \setlength{\tabcolsep}{6pt}%
+  \setlength{\AnchoTabla}{\dimexpr\linewidth-#1\tabcolsep-#1\tabcolsep+2\tabcolsep\relax}%
+  \setlength{\LTleft}{0pt}\setlength{\LTright}{0pt}%
+  \setlength{\LTcapwidth}{\linewidth}%
+  \setlength{\LTpre}{.55em}\setlength{\LTpost}{.8em}%
+  \renewcommand{\arraystretch}{1.24}%
+  \arrayrulecolor{Linea}%
+  \begin{longtable}{@{}#2@{}}%
+}{\end{longtable}\endgroup}
+\newcommand{\CabeceraTabla}[1]{\sffamily\bfseries\color{Azul}#1}
+\newcommand{\NotaLibro}[1]{{\footnotesize\color{Gris}\textit{Nota.} #1}}
+\newcommand{\SigueTabla}[1]{\multicolumn{#1}{@{}l@{}}{\footnotesize\color{Gris}Tabla \thetable\space (continuación)}\\}
+\newcommand{\ContinuaTabla}[1]{\multicolumn{#1}{@{}r@{}}{\footnotesize\color{Gris}Continúa en la página siguiente.}\\}
+\newcommand{\RefTabla}[1]{\hyperref[#1]{tabla~\ref*{#1}}}
+\newcommand{\RefFigura}[1]{\hyperref[#1]{figura~\ref*{#1}}}
+\newcommand{\RefCapitulo}[1]{\hyperref[#1]{capítulo~\ref*{#1}}}
+\newcommand{\RefAnexo}[1]{\hyperref[#1]{anexo~\ref*{#1}}}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc}
+\tikzset{
+  diagrama nodo/.style={font=\sffamily\small,align=center,inner sep=5pt,
+    draw=Linea,fill=Papel,text=Azul,thick,minimum height=8mm},
+  diagrama bloque/.style={diagrama nodo,rounded corners=1.3mm},
+  diagrama proceso/.style={diagrama nodo},
+  diagrama terminal/.style={diagrama nodo,ellipse,fill=Suave,draw=Verde,minimum width=16mm},
+  diagrama datos/.style={diagrama nodo,trapezium,
+    trapezium left angle=71,trapezium right angle=109,trapezium stretches=true,fill=Suave},
+  diagrama decision/.style={diagrama nodo,diamond,aspect=2.45,fill=Suave,draw=Verde,
+    inner sep=1.5pt},
+  diagrama flecha/.style={-{Latex[length=2.2mm]},draw=Verde,line width=.76pt,rounded corners=1.3pt},
+  diagrama union/.style={draw=Gris,line width=.55pt},
+  diagrama rama/.style={font=\sffamily\footnotesize,text=Gris,fill=white,inner sep=2pt}
+}
+\NewDocumentCommand{\FiguraLibro}{m m m m}{%
+  \par\addvspace{.8em}%
+  \noindent\begin{minipage}{\linewidth}
+    \centering
+    \input{figuras/#1}\par
+    \captionof{figure}{#2}\label{#3}%
+    \if\relax\detokenize{#4}\relax\else
+      \RaggedRight\NotaLibro{#4}\par
+    \fi
+  \end{minipage}\par\addvspace{.8em}%
+}
+
+% Listados de texto plano y código incluidos desde los archivos ejecutables.
+\usepackage{listings}
+\lstdefinestyle{libro}{
+  basicstyle=\small\ttfamily\color{Tinta}, backgroundcolor=\color{Papel},
+  frame=leftline, framerule=1pt, rulecolor=\color{Linea}, framesep=5pt,
+  xleftmargin=2mm, xrightmargin=.75mm, aboveskip=.7em, belowskip=.65em,
+  columns=fullflexible, keepspaces=true, upquote=true, tabsize=4,
+  showstringspaces=false, breaklines=true, breakatwhitespace=false,
+  keywordstyle=\color{Verde}\bfseries, commentstyle=\color{Gris}\itshape,
+  stringstyle=\color{Azul},
+  literate=
+    {á}{{á}}1 {é}{{é}}1 {í}{{í}}1 {ó}{{ó}}1 {ú}{{ú}}1
+    {Á}{{Á}}1 {É}{{É}}1 {Í}{{Í}}1 {Ó}{{Ó}}1 {Ú}{{Ú}}1
+    {ñ}{{ñ}}1 {Ñ}{{Ñ}}1 {ü}{{ü}}1 {²}{{²}}1 {←}{{$\leftarrow$}}1
+}
+\NewDocumentCommand{\Python}{O{} m}{\lstinputlisting[style=libro,language=Python,#1]{recursos/#2}}
+\NewDocumentCommand{\Pseudocodigo}{m}{\lstinputlisting[style=libro]{recursos/pseudocodigo/#1}}
+\NewDocumentCommand{\Salida}{m}{\lstinputlisting[style=libro]{recursos/salidas/#1}}
+\newcommand{\Codigo}[1]{\texttt{#1}}
+
+\newcommand{\CapituloFinal}[1]{%
+  \chapter*{#1}\markboth{#1}{}\addcontentsline{toc}{chapter}{#1}}
+\newcommand{\SeccionLibro}[2][]{%
+  \section*{#2}%
+  \if\relax\detokenize{#1}\relax
+    \addcontentsline{toc}{section}{#2}%
+  \else
+    \addcontentsline{toc}{section}{#1}%
+  \fi
+}
+\newcounter{ejemplo}[chapter]
+\renewcommand{\theejemplo}{\thechapter.\arabic{ejemplo}}
+\newcommand{\Ejemplo}[1]{%
+  \refstepcounter{ejemplo}\subsection*{Ejemplo \theejemplo. #1}}
+
+\usepackage[authoryear,round]{natbib}
+\setlength{\bibhang}{1.5em}
+\setlength{\bibsep}{.45em}
+\renewcommand{\bibsection}{\CapituloFinal{Referencias bibliográficas}}
+\usepackage[unicode,bookmarksnumbered,bookmarksopen,
+  colorlinks,linkcolor=Azul,citecolor=Verde,urlcolor=Verde]{hyperref}
+\usepackage{bookmark}
+\hypersetup{
+  pdftitle={\TituloLibro. \SubtituloLibro},
+  pdfsubject={\TipoManuscrito},
+  pdflang={es-PE}
+}
+\AtBeginDocument{\color{Tinta}}

@@ -1,0 +1,30 @@
+\begin{titlepage}
+  \thispagestyle{empty}
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[Papel] (current page.south west) rectangle (current page.north east);
+    \fill[Azul] (current page.north west)
+      rectangle ([yshift=-121mm]current page.north east);
+    \fill[Verde] ([yshift=-121mm]current page.north west)
+      rectangle ([yshift=-122mm]current page.north east);
+    \begin{scope}[shift={([xshift=105mm,yshift=87mm]current page.south west)}]
+      \node[inner sep=0pt,opacity=.27] at (2.95,1.4)
+        {\includegraphics[width=99mm]{figuras/portada-codigo.png}};
+      \node[inner sep=0pt] at (-.15,0)
+        {\includegraphics[height=101mm]{figuras/portada-programacion.png}};
+    \end{scope}
+    \node[anchor=north west,inner sep=0pt,text=white,text width=149mm]
+      at ([xshift=26mm,yshift=-25mm]current page.north west) {%
+        \sffamily\bfseries\small\MakeUppercase{\TipoManuscrito}\par
+        \vspace{13mm}
+        {\fontsize{48}{50}\selectfont Programar\par para resolver\par}
+        \vspace{6mm}
+        {\mdseries\fontsize{16}{21}\selectfont\SubtituloLibro\par}
+      };
+    \draw[Linea,line width=.55pt] ([xshift=26mm,yshift=29mm]current page.south west)
+      -- ([xshift=-26mm,yshift=29mm]current page.south east);
+    \node[anchor=west,inner sep=0pt,text=Azul,font=\sffamily\bfseries\normalsize]
+      at ([xshift=26mm,yshift=20mm]current page.south west) {\AnioEdicion};
+  \end{tikzpicture}
+  \null\vfill
+\end{titlepage}
+\setcounter{page}{2}
