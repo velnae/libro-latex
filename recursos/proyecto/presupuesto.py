@@ -5,6 +5,7 @@ def entero_no_negativo(valor, campo):
 
 
 def evaluar_compra(presupuesto, materiales):
+    """Devuelve (total, saldo, viable) para los importes en céntimos."""
     entero_no_negativo(presupuesto, "Presupuesto")
     total = 0
     for nombre, cantidad, precio in materiales:

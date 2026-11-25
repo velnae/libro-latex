@@ -17,9 +17,9 @@
 \multicolumn{3}{@{}p{\linewidth}@{}}{\NotaLibro{Elaboración propia.}}\\
 \endlastfoot
 
-R1 & Presupuesto entero no negativo & Rechazar valores inválidos \\
-R2 & Material con nombre, cantidad y precio & Nombre no vacío, cantidad entera positiva y precio entero no negativo \\
-R3 & Calcular subtotales y total & Total igual a suma de importes \\
-R4 & Determinar viabilidad y saldo & Viable si total \ensuremath{\leq} presupuesto \\
-R5 & Mostrar informe monetario & Importes en soles con dos decimales \\
+R1 & Recibir presupuesto y lista de materiales & Acepta presupuesto entero no negativo y permite lista vacía. \\
+R2 & Validar cada material & Exige nombre con texto, cantidad entera positiva y precio entero no negativo en céntimos. \\
+R3 & Calcular subtotales y total & El total es la suma de cantidad por precio de cada material. \\
+R4 & Determinar saldo y viabilidad & El saldo es el presupuesto menos el total. La compra es viable si el saldo es cero o positivo. \\
+R5 & Comunicar el resultado o el error & Informa total y saldo en soles con dos decimales y comunica la viabilidad. Si los datos son inválidos, informa el error. \\
 \end{tablalibro}

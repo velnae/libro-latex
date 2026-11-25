@@ -1,14 +1,15 @@
 INICIO
     LEER B, n
-    SI B < 0 O n < 0 ENTONCES
+    SI B no es entero no negativo O n no es entero no negativo ENTONCES
         MOSTRAR "Datos iniciales inválidos"
         TERMINAR
     FIN SI
     total ← 0
     PARA i ← 1 HASTA n HACER
-        LEER q, p
-        SI q <= 0 O p < 0 ENTONCES
-            MOSTRAR "Producto inválido"
+        LEER nombre, q, p
+        SI nombre está en blanco O q no es entero positivo
+           O p no es entero no negativo ENTONCES
+            MOSTRAR "Material inválido"
             TERMINAR
         FIN SI
         total ← total + q * p

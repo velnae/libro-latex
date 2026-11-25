@@ -6,7 +6,7 @@ Un programa que se ejecuta sin mostrar errores no necesariamente resuelve el pro
 
 Este capítulo desarrolla un proceso de trabajo basado en evidencias: establecer resultados esperados, ejecutar pruebas, registrar diferencias, localizar sus causas y modificar la solución sin introducir nuevos defectos. Se retoma el control de presupuesto de materiales desarrollado en los capítulos anteriores, ahora como un problema integral de calidad de software.
 
-\citet[pp.~12–13]{farrell2013} explica que una ejecución satisfactoria con un conjunto de datos no permite concluir que toda la lógica sea correcta. Esta observación fundamenta la necesidad de elegir cuidadosamente los datos de prueba.
+\textcite[pp.~12–13]{farrell2013} explica que una ejecución satisfactoria con un conjunto de datos no permite concluir que toda la lógica sea correcta. Esta observación fundamenta la necesidad de elegir cuidadosamente los datos de prueba.
 
 \begin{resultados}
   \begin{itemize}
@@ -35,7 +35,7 @@ Un caso de prueba describe las condiciones necesarias para evaluar un comportami
 
 El resultado esperado se obtiene de la especificación o de un cálculo independiente, no copiando el resultado producido por el programa. De lo contrario, un error podría convertirse en una expectativa equivocada. En el ejemplo de presupuesto, si se solicitan cuatro unidades de 350 céntimos, el resultado esperado es 1400 céntimos, calculado antes de la ejecución.
 
-Las pruebas unitarias evalúan funciones o componentes aislados; las pruebas de integración comprueban su interacción; las pruebas del sistema evalúan el comportamiento global; y las pruebas de aceptación se centran en la utilidad frente a los requisitos del usuario.
+Las pruebas unitarias evalúan funciones o componentes aislados. Las pruebas de integración comprueban cómo interactúan, las pruebas del sistema evalúan el comportamiento global y las pruebas de aceptación contrastan la solución con los requisitos del usuario. El proyecto utiliza \Codigo{unittest} para agrupar y ejecutar las comprobaciones de Python \parencite{python312unittest}.
 
 \input{tablas/44-plantilla-de-casos-de-prueba}
 
@@ -61,7 +61,7 @@ Se emplea type(nota) is \Codigo{int} para excluir expresamente los booleanos, qu
 
 \section{Seguimiento de la ejecución y análisis de resultados}
 
-El seguimiento permite observar cómo cambian los valores internos durante la ejecución. En una prueba de escritorio se recorren manualmente las instrucciones, registrando el estado de las variables, las condiciones evaluadas y las salidas. Esta práctica facilita detectar discrepancias antes de ejecutar el código \citep[cap.~1]{farrell2013}.
+Para seguir la ejecución, registre el valor de las variables, las condiciones evaluadas y la salida después de cada paso relevante. Esta tabla permite contrastar el estado observado con el esperado. El ejercicio pone en práctica la propuesta de explicitar el comportamiento del programa durante la ejecución \parencite{sorva2013}.
 
 En los ciclos resulta especialmente importante distinguir el estado anterior y posterior de un acumulador. Un total inicial incorrecto, una actualización duplicada o una condición que omite el último elemento pueden afectar todos los resultados posteriores.
 
@@ -75,7 +75,7 @@ El invariante del ciclo establece que, después de procesar k elementos, total e
 
 Los errores de sintaxis se producen cuando las instrucciones no respetan las reglas gramaticales del lenguaje. En Python, omitir los dos puntos al final de una condición impide que el código sea interpretado correctamente. Los errores de ejecución aparecen cuando una operación no puede realizarse bajo las condiciones presentes, por ejemplo, al dividir entre cero o consultar una posición inexistente de una lista.
 
-Los errores lógicos son discrepancias entre el comportamiento implementado y el requerido. El programa puede ejecutarse normalmente, pero producir una respuesta incorrecta. \citet[p.~13]{farrell2013} destaca que incluso una operación equivocada puede coincidir accidentalmente con el resultado esperado para una entrada específica.
+Los errores lógicos son discrepancias entre el comportamiento implementado y el requerido. El programa puede ejecutarse normalmente, pero producir una respuesta incorrecta. \textcite[p.~13]{farrell2013} destaca que incluso una operación equivocada puede coincidir accidentalmente con el resultado esperado para una entrada específica.
 
 No toda excepción implica un defecto de diseño: una entrada inválida puede generar deliberadamente una excepción controlada para impedir que el programa continúe con datos inconsistentes. El problema surge cuando la situación no se prevé o no se gestiona de acuerdo con los requisitos.
 
@@ -83,7 +83,7 @@ No toda excepción implica un defecto de diseño: una entrada inválida puede ge
 
 \section{Técnicas básicas de depuración y corrección de errores}
 
-Depurar consiste en localizar la causa de un defecto y corregirla. No es suficiente modificar instrucciones hasta que desaparezca el síntoma; es necesario identificar por qué se produce y comprobar que la corrección no afecta otros comportamientos. \citet[p.~13]{farrell2013} relaciona la depuración con la ejecución de múltiples conjuntos de datos.
+Depurar consiste en localizar la causa de un defecto y corregirla. No es suficiente modificar instrucciones hasta que desaparezca el síntoma; es necesario identificar por qué se produce y comprobar que la corrección no afecta otros comportamientos. \textcite[p.~13]{farrell2013} relaciona la depuración con la ejecución de múltiples conjuntos de datos.
 
 El procedimiento recomendado comienza por reproducir el error con una entrada pequeña. Se compara el resultado con la expectativa, se formula una hipótesis sobre la causa y se examinan los estados intermedios. Luego se modifica únicamente lo necesario y se repite la prueba original, junto con las demás pruebas relacionadas.
 
@@ -103,7 +103,7 @@ La primera versión rechaza una compra que utiliza exactamente el presupuesto. E
 
 \section{Calidad del código: legibilidad, organización, documentación y reutilización}
 
-Un programa de calidad no solo calcula resultados correctos; también permite comprender, modificar y comprobar su funcionamiento. Los nombres expresivos, las funciones de responsabilidad definida y los comentarios pertinentes favorecen el mantenimiento. \citet[pp.~63–64]{farrell2013} vincula el buen diseño con la selección cuidadosa de identificadores, la claridad de las instrucciones y la documentación apropiada.
+Un programa de calidad no solo calcula resultados correctos; también permite comprender, modificar y comprobar su funcionamiento. Los nombres expresivos, las funciones de responsabilidad definida y los comentarios pertinentes favorecen el mantenimiento. \textcite[pp.~63–64]{farrell2013} vincula el buen diseño con la selección cuidadosa de identificadores, la claridad de las instrucciones y la documentación apropiada.
 
 La legibilidad disminuye el esfuerzo requerido para entender la intención de una instrucción. La organización separa las responsabilidades y evita dependencias innecesarias. La documentación explica contratos, restricciones y decisiones que no resultan evidentes a partir del código. La reutilización permite emplear funciones en distintos escenarios sin copiar su implementación.
 
@@ -152,13 +152,13 @@ El alcance se limita a una aplicación de consola con datos en memoria. No inclu
 
 \Pseudocodigo{04-proyecto-presupuesto.txt}
 
-La descomposición separa la validación, el cálculo y la presentación. La entrada consiste en el presupuesto y una colección de materiales; el procesamiento incluye validaciones, multiplicación, acumulación y comparación; la salida incluye total, saldo y condición de viabilidad. El nombre debe contener texto y la cantidad de cada material debe ser un entero positivo. El presupuesto y el precio unitario son enteros no negativos. Una lista vacía representa una compra con total cero.
+El modelo completa el recorrido de la \RefTabla{tab:modelo-eps-del-caso-integrador}. La validación aplica R1 y R2, el cálculo aplica R3 y R4 y el informe aplica R5. Los importes se mantienen en céntimos hasta presentar el resultado.
 
 \subsection{Etapa 3. Implementación en Python}
 
 \Python*{proyecto/presupuesto.py}
 
-El listado corresponde al archivo \Codigo{presupuesto.py} incluido en los recursos. La función recibe una colección iterable de registros con tres campos. Una interfaz que lea archivos o texto externo también debe comprobar la estructura de cada registro.
+El archivo \Codigo{presupuesto.py} conserva el contrato del \RefCapitulo{cap:03-fundamentos-de-programacion}. La función recibe el presupuesto y un iterable de ternas. Devuelve total, saldo y viabilidad. Este proyecto trabaja con registros ya estructurados en memoria.
 
 \Needspace{11\baselineskip}
 \subsection{Etapa 4. Pruebas y resultados esperados}
@@ -167,11 +167,11 @@ El listado corresponde al archivo \Codigo{presupuesto.py} incluido en los recurs
 
 \Salida{04-proyecto-presupuesto.txt}
 
-Esta es la salida esperada del escenario de referencia. Las pruebas del \RefAnexo{anexo:pruebas} permiten reproducir los demás casos de la matriz. Véase la \RefTabla{tab:matriz-de-pruebas-del-proyecto}.
+Esta es la salida esperada para los materiales de la \RefTabla{tab:datos-iniciales-del-caso-practico}. Las pruebas del \RefAnexo{anexo:pruebas} reproducen los casos de la matriz y comprueban el formato monetario.
 
 \subsection{Etapa 5. Depuración, evaluación y mejora}
 
-Supóngase que una versión inicial utilizaba saldo > 0 para determinar la viabilidad. La prueba P02 revelaría que el programa rechaza una compra de presupuesto exacto. El defecto se localiza en la condición de retorno y se corrige a saldo >= 0. Se vuelven a ejecutar las pruebas P01 a P10 para comprobar que la modificación no altera las demás reglas.
+Supóngase que una versión inicial utilizaba \Codigo{saldo > 0} para determinar la viabilidad. La prueba P02 revelaría que el programa rechaza una compra de presupuesto exacto. Corrija la condición a \Codigo{saldo >= 0} y vuelva a ejecutar las pruebas P01 a P11 para comprobar las demás reglas.
 
 La función \Codigo{evaluar\_compra} recorre los \(n\) materiales. Bajo el modelo de costo constante por registro, su tiempo es \(O(n)\) y su espacio auxiliar, \(O(1)\). La colección de entrada ocupa espacio proporcional a \(n\). El cálculo acumula los subtotales sin construir una segunda lista.
 

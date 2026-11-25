@@ -1,0 +1,175 @@
+\chapter{Solucionario}\label{anexo:solucionario}
+\chaptermark{Solucionario}
+
+Las respuestas siguen el orden de cada capítulo. En los ejercicios abiertos, compruebe que su propuesta declara las reglas, calcula resultados verificables y cubre los casos indicados.
+
+\section{Capítulo 1. Análisis de problemas}
+
+\subsection{Preguntas de comprensión}
+
+\begin{enumerate}
+\item Resolver un problema implica entender la necesidad, definir un resultado y comprobar una estrategia. Escribir el programa implementa esa estrategia en un lenguaje.
+\item Deben poder definirse entradas representables, operaciones precisas, restricciones y salidas que puedan comprobarse.
+\item Las personas pueden descomponer, abstraer y comprobar una solución a mano antes de decidir si usarán una computadora.
+\item La descomposición permite resolver partes manejables y explicitar de qué datos o resultados depende cada una.
+\item Reconocer un patrón identifica una regularidad. Generalizar la convierte en una regla que admite nuevos datos o situaciones.
+\item La relevancia depende de la regla. La hora importa para una tarifa nocturna y puede omitirse en una tarifa fija.
+\item Puede omitir una condición necesaria. Por ejemplo, ignorar los recargos produce un importe menor que el definido para un viaje nocturno.
+\item La salida requerida orienta la selección de entradas y operaciones. Si hay que informar el saldo, se necesitan el presupuesto y los gastos.
+\item Las restricciones delimitan valores y acciones admitidos. Los criterios de aceptación permiten decidir si el resultado satisface la regla acordada.
+\item Simule casos normales, límites e inválidos con datos concretos y calcule a mano lo que debería ocurrir.
+\end{enumerate}
+
+\subsection{Ejercicios}
+
+\begin{enumerate}
+\item \textbf{Cafetería.} Calcule el importe del pedido sumando cantidad por precio unitario de cada línea. Para esta regla, el color del plato, la mesa y el nombre del camarero son prescindibles. Rechace cantidades negativas antes de calcular. Dos unidades de S/ 5,00 y una de S/ 3,50 dan S/ 13,50.
+\item \textbf{Préstamos.} Seleccione los préstamos activos, valide su fecha de devolución prevista y compárela con la fecha de corte. Cuente como vencido cada préstamo sin devolución cuya fecha prevista sea anterior al corte. Si el corte es el 10 de junio, un préstamo activo con fecha prevista del 9 cuenta como vencido y uno del día 10 sigue vigente.
+\item \textbf{Asistencia.} Cuente las marcas P (presente) y A (ausente). Si la regla acordada excluye ausencias justificadas J, divida presentes entre \(P+A\). Para P, A, J, P, el resultado es \(2/3\), aproximadamente 66,67\,\%. Si el denominador es cero, indique que faltan sesiones evaluables.
+\item \textbf{Presupuesto familiar.} Reciba un presupuesto y una colección de importes por categoría. Calcule el saldo restando la suma al presupuesto. Con S/ 100,00 y gastos de S/ 30,00, S/ 20,00 y S/ 15,00, quedan S/ 35,00. Con una colección vacía, el saldo es el presupuesto completo.
+\item \textbf{Existencias.} Reciba el stock y el mínimo como enteros no negativos. Para esta regla, emita un aviso si el stock es menor que el mínimo. Con stock 4 y mínimo 5 se solicita reposición. Con 5 y 5 el requisito se cumple. Rechace un stock de \(-1\).
+\end{enumerate}
+
+\subsection{Comprobación de los desafíos}
+
+En el horario, compruebe dos actividades separadas, dos consecutivas y dos superpuestas. Puede modelar los intervalos como \([inicio, fin)\), de modo que terminar a las 10:00 e iniciar a las 10:00 sea válido. En reciclaje, valide categoría y peso, agrupe por semana y categoría y compruebe que el resumen conserve el peso total. En el desafío de integración, vincule cada salida con las entradas que necesita y muestre el resultado esperado de los cuatro casos.
+
+\section{Capítulo 2. Diseño algorítmico}
+
+\subsection{Preguntas de comprensión}
+
+\begin{enumerate}
+\item El algoritmo especifica un procedimiento. El programa expresa ese procedimiento en un lenguaje ejecutable.
+\item La finitud exige que el procedimiento termine para toda entrada admitida. En un recorrido, el avance debe acercar el contador al final.
+\item El requerimiento indica qué se necesita. El criterio de aceptación expresa cómo comprobarlo con una condición observable.
+\item Una precondición debe cumplirse al comenzar. Una poscondición describe el resultado o estado que se garantiza al terminar.
+\item El modelo EPS especifica las entradas, el procesamiento que las transforma y las salidas esperadas.
+\item Una búsqueda lineal sirve para recorrer datos sin orden previo, especialmente si la lista es pequeña o se harán pocas consultas.
+\item Descomponer define las subtareas. Refinar precisa los pasos con los que se realizará cada una.
+\item El pseudocódigo facilita discutir la lógica con convenciones legibles. Su interpretación requiere acordar esas convenciones.
+\item Use un rombo con una condición y rotule cada salida con el resultado que lleva a esa rama.
+\item El caso de prueba fija entrada y resultado esperado. Una tabla de seguimiento registra los estados intermedios de la ejecución.
+\item En las fronteras cambia la regla aplicada. Probar ambos lados y el punto límite ayuda a detectar errores de inclusión.
+\item Una prueba aporta evidencia sobre los datos ejecutados. La corrección general requiere un argumento para el dominio definido.
+\end{enumerate}
+
+\subsection{Ejercicios}
+
+\begin{enumerate}
+\item \textbf{Tiempo.} Reciba \(s\) segundos enteros no negativos. Divida \(s\) entre 3600 para obtener horas y resto. Divida el resto entre 60 para obtener minutos y segundos. Las salidas para 0, 59, 60 y 3601 son \((0,0,0)\), \((0,0,59)\), \((0,1,0)\) y \((1,0,1)\), respectivamente.
+\item \textbf{Calificaciones.} Valide \(0\leq n_i\leq 20\) para las tres notas. Calcule \(p=0{,}20n_1+0{,}30n_2+0{,}50n_3\). Muestre el promedio y luego informe aprobado si \(p\geq 11\). Con 14, 12 y 16 se obtiene 14,40. Tres notas de 11 permiten comprobar la igualdad.
+\item \textbf{Inventario.} Reciba existencias enteras no negativas y una solicitud entera positiva. Si la solicitud supera el stock, informe que el pedido es inviable y conserve las existencias. En otro caso reste la cantidad. Con 5 y 5 quedan 0. Con 5 y 6 quedan 5. Rechace una solicitud de \(-1\).
+\item \textbf{Agua.} Inicie el acumulador en cero y sume cada lectura de una lista de siete consumos no negativos. Para 10, 12, 8, 10, 12, 9 y 9 litros, los acumulados son 10, 22, 30, 40, 52, 61 y 70. Dividir 70 entre 7 da 10 litros de promedio.
+\item \textbf{Búsqueda.} Compare desde el índice 0. Devuelva el índice al encontrar la primera coincidencia. Si el recorrido termina, informe ausencia. Buscar A01 en [A02, A01, A01] devuelve 1. En una lista vacía, el resultado es ausencia.
+\item \textbf{Tarifa.} Acepte una distancia entera \(d\geq 1\). Calcule \(3+(d-1)\) soles. Pruebe 0 como inválido, 1 con S/ 3,00 y 2 con S/ 4,00.
+\item \textbf{Asistencia.} Recorra la lista, valide cada símbolo y sume uno por cada P. Divida por la cantidad de marcas y multiplique por 100. P, P, A, A da 50\,\%. Informe que faltan registros si la lista está vacía. Una X produce error de entrada.
+\end{enumerate}
+
+\subsection{Comprobación de los desafíos}
+
+En el préstamo, calcule los días transcurridos entre la entrega y la devolución. Rechace una devolución anterior a la entrega. Con un plazo fijo, obtenga el retraso con \(\max(0,\text{días transcurridos}-\text{plazo})\) y multiplíquelo por la tarifa diaria. En el monitoreo, con lecturas \(-2,0,3,1\) y umbral 1, el máximo es 3, el promedio 0,5 y hay una lectura superior al umbral. En el desafío de integración, confronte cada decisión y actualización del diagrama con el pseudocódigo y justifique el avance de cada ciclo.
+
+\section{Capítulo 3. Programación en Python}
+
+\subsection{Preguntas de comprensión}
+
+\begin{enumerate}
+\item La implementación precisa los tipos de los datos, el orden de ejecución, las instrucciones de control, los valores que devuelve y los mensajes de salida.
+\item Un entero representa una cantidad sobre la cual se puede operar numéricamente. Una cadena representa caracteres y puede conservar ceros de un identificador.
+\item \Codigo{=} vincula el nombre de la izquierda con un valor. \Codigo{==} compara dos valores.
+\item La precedencia fija el orden de evaluación. \Codigo{2 + 3 * 4} da 14 y \Codigo{(2 + 3) * 4} da 20.
+\item \Codigo{input()} entrega texto. Conviértalo a un tipo numérico y compruebe que el valor cumpla el dominio del problema.
+\item Una secuencia basta cuando la solución ejecuta una vez todas sus instrucciones en el mismo orden.
+\item Varios \Codigo{if} evalúan sus condiciones de forma independiente. Una cadena \Codigo{if}, \Codigo{elif}, \Codigo{else} ejecuta la primera alternativa aplicable.
+\item Establezca un estado inicial, una condición de salida alcanzable y una actualización que avance hacia ella.
+\item Un contador registra ocurrencias. Un acumulador suma o combina los valores de los elementos procesados.
+\item \Codigo{return} entrega un resultado al código que llamó a la función. \Codigo{print} presenta texto al usuario.
+\item Use un diccionario cuando el acceso depende de una clave, como el código de producto. Use una lista cuando se trabaja por posición o se recorre una secuencia.
+\item Una colección vacía puede impedir un promedio o un acceso por índice. Los valores límite comprueban si las comparaciones incluyen los extremos previstos.
+\end{enumerate}
+
+\subsection{Ejercicios}
+
+\begin{enumerate}
+\item \textbf{Conversión de segundos.} Aplique dos divisiones con resto. Las cuatro salidas deben coincidir con las del ejercicio de tiempo del capítulo 2.
+\begin{lstlisting}[style=libro,language=Python]
+try:
+    segundos = int(input("Segundos: "))
+    if segundos < 0:
+        raise ValueError("Se requiere un entero no negativo")
+    horas, resto = divmod(segundos, 3600)
+    minutos, segundos = divmod(resto, 60)
+    print(horas, minutos, segundos)
+except ValueError as error:
+    print("Entrada inválida:", error)
+\end{lstlisting}
+\item \textbf{Promedio y aprobación.} Lea tres notas, valide el intervalo y calcule la media aritmética. Con 10, 11 y 12, el promedio es 11 y se aprueba. Una nota de 21 produce un mensaje de error.
+\begin{lstlisting}[style=libro,language=Python]
+notas = []
+try:
+    for numero in range(1, 4):
+        nota = float(input(f"Nota {numero}: "))
+        if not 0 <= nota <= 20:
+            raise ValueError("La nota debe estar entre 0 y 20")
+        notas.append(nota)
+    promedio = sum(notas) / len(notas)
+    print(f"Promedio: {promedio:.2f}")
+    print("Aprobado" if promedio >= 11 else "Desaprobado")
+except ValueError as error:
+    print("Entrada inválida:", error)
+\end{lstlisting}
+\item \textbf{Inventario.} Lea y convierta a enteros las existencias y la solicitud. Rechace existencias negativas y solicitudes menores o iguales a cero. Si \Codigo{solicitud <= existencias}, reste la solicitud y muestre el saldo. En la otra rama indique que el pedido excede el stock. Con 10 y 10 quedan 0. Con 10 y \(-1\), muestre un error.
+\item \textbf{Consumo.} Para este ejemplo, acepte siete valores enteros no negativos en litros. Valide la longitud y cada valor antes de calcular \Codigo{sum(consumos)}, \Codigo{total / len(consumos)} y \Codigo{max(consumos)}. Con la lista del capítulo 2 se obtienen 70, 10 y 12 litros. Rechace una lista con seis entradas o una lectura negativa.
+\item \textbf{Asistencia.} Recorra las marcas, cuente P y A por separado y rechace cualquier otro símbolo. Si la lista está vacía, informe que faltan registros. Con P, A, P y P, los contadores son 3 y 1 y la asistencia es 75\,\%.
+\item \textbf{Importe y formato.} Para entradas validadas, una función devuelve \Codigo{cantidad * precio}. Use la función \Codigo{soles} de \Codigo{presupuesto.py} para formatear el entero resultante. Las parejas (2, 225), (1, 105) y (3, 0) producen \Codigo{S/ 4.50}, \Codigo{S/ 1.05} y \Codigo{S/ 0.00}.
+\item \textbf{Diccionario.} Parta de \Codigo{\{"A01": 3, "A02": 5\}}. Para añadir dos unidades a A01, use \Codigo{stock["A01"] = stock.get("A01", 0) + 2}. Consulte \Codigo{stock.get("A99", 0)} para obtener 0 sin generar una excepción.
+\item \textbf{Filtrado.} Cree una lista vacía y agregue las notas que cumplan el umbral. Para [8, 11, 14], la lista nueva contiene [11, 14].
+\begin{lstlisting}[style=libro,language=Python]
+notas = [8, 11, 14]
+aprobadas = []
+for nota in notas:
+    if nota >= 11:
+        aprobadas.append(nota)
+print(aprobadas, notas)
+\end{lstlisting}
+\end{enumerate}
+
+\subsection{Comprobación de los desafíos}
+
+En la biblioteca, tome como vigente un préstamo con días transcurridos entre cero y el plazo, inclusive. En el monitoreo, reutilice los datos del capítulo 2 como prueba de regresión. En el presupuesto ampliado, pruebe una lista vacía, un código repetido y un empate entre subtotales. Si usa como desempate el primer registro, compruebe también el resultado al invertir el orden de entrada.
+
+\section{Capítulo 4. Pruebas y mejora}
+
+\subsection{Preguntas de comprensión}
+
+\begin{enumerate}
+\item Verificar comprueba la especificación. Validar comprueba la utilidad de la solución para la necesidad que motivó el proyecto.
+\item Los datos empleados pueden pasar por una sola rama o producir por coincidencia el resultado esperado.
+\item Deduzca el resultado de la regla acordada o calcúlelo a mano antes de ejecutar el programa.
+\item Una prueba unitaria comprueba un componente aislado. Una prueba de integración comprueba el intercambio de datos o el comportamiento conjunto de varios componentes.
+\item Para el intervalo entero cerrado de 0 a 20, incluya \(-1\), 0, 1, un valor interior, 19, 20 y 21.
+\item Registra pasos, valores de variables, resultados de condiciones y salidas relevantes.
+\item Un error lógico produce un resultado incompatible con la regla. Un error de ejecución se manifiesta cuando una operación falla durante el uso.
+\item Reproducirlo fija la entrada y la salida observada. Permite contrastar hipótesis y confirmar la corrección con el mismo caso.
+\item La refactorización mejora la organización interna y conserva el comportamiento observable acordado.
+\item \(O(n)\) expresa una cota superior de crecimiento lineal en función de \(n\). Un recorrido que procesa una vez cada elemento y hace trabajo constante por elemento tiene ese costo.
+\item Use un conjunto para muchas consultas de pertenencia con datos aptos como elementos del conjunto. Considere el costo de construirlo y la memoria adicional.
+\item Las pruebas de regresión vuelven a comprobar comportamientos antes correctos después de cambiar el código.
+\end{enumerate}
+
+\subsection{Ejercicios}
+
+\begin{enumerate}
+\item \textbf{Promedio vacío.} Llamar al promedio con [] produce \Codigo{ZeroDivisionError} si la función divide por la longitud. Compruebe la lista al inicio y genere \Codigo{ValueError} con un mensaje claro. Pruebe la lista vacía y [12, 16], que debe dar 14.
+\item \textbf{Contador.} Para las marcas P, A y P, el contador erróneo pasa por 1, 2, 2 y 3. Al iniciar en 0, pasa por 0, 1, 1 y 2. Una lista vacía confirma el valor inicial esperado.
+\item \textbf{Descuento.} Si el descuento es un importe entre cero y el monto, calcule \Codigo{monto - descuento}. Con 100 y 10 se espera 90 y se detecta el 110 erróneo. Con 50 y 50 se espera 0 y se detecta el 100 erróneo.
+\item \textbf{Aprobación.} Para notas 10, 11 y 12, la condición correcta produce falso, verdadero y verdadero. Cambie el operador a \Codigo{>=} y repita las tres pruebas para verificar el límite.
+\item \textbf{Subtotal.} Extraiga \Codigo{subtotal(cantidad, precio)} y delegue en esa función desde los tres puntos de cálculo. Compare casos como \(4\times350=1400\) y \(2\times0=0\) antes y después del cambio.
+\item \textbf{Costo.} Si cada iteración cuenta como una operación, un recorrido realiza 5 y 20 operaciones para los tamaños indicados. Dos ciclos anidados de alcance completo realizan 25 y 400.
+\item \textbf{Búsqueda.} Para una función de pertenencia, buscar A01 en [] devuelve falso. Buscar A02 en [A01, A03] devuelve falso. Buscar A03 en esa lista devuelve verdadero. Incluya una coincidencia al final para comprobar que el recorrido alcanza el último elemento.
+\item \textbf{Informe ampliado.} Si los materiales se guardan en una lista, muestre \Codigo{len(materiales)} al presentar el informe. Mantenga la terna que devuelve \Codigo{evaluar\_compra}. Compruebe tres registros y cero registros, y ejecute las once pruebas previas.
+\end{enumerate}
+
+\subsection{Comprobación del desafío integrador}
+
+Pruebe un préstamo válido, el último ejemplar disponible, un intento sin stock, un código desconocido, un registro de préstamo duplicado, una devolución válida, una devolución repetida, un lector desconocido, un inventario vacío y el retorno del primer ejemplar tras agotarse el stock. Para depurar, pruebe una versión que permite prestar con stock cero. Registre el resultado incorrecto, corrija la condición que exige stock positivo y repita todos los casos.

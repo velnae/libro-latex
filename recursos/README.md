@@ -35,4 +35,6 @@ python3 -m unittest -v
 
 Con los materiales de ejemplo, el costo total es S/ 46,50 y el saldo es S/ 53,50. El programa escribe los importes con punto decimal. Las pruebas cubren el caso habitual, el presupuesto exacto e insuficiente, una lista vacía, entradas inválidas, un precio de cero y el formato monetario.
 
+Tanto el ejemplo del capítulo 3 como el proyecto del capítulo 4 aceptan el presupuesto en céntimos y un iterable de ternas con nombre, cantidad y precio unitario en céntimos. `evaluar_compra(presupuesto, materiales)` devuelve `(total, saldo, viable)`, por ejemplo `(4650, 5350, True)`.
+
 Para practicar con un caso adicional, adapta el proyecto a un registro de préstamos o a un inventario. En el cierre de cada capítulo se encuentran los ejercicios y las indicaciones para evaluar los resultados.

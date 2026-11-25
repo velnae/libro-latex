@@ -1,12 +1,12 @@
 \begin{tikzpicture}
   \node[diagrama terminal] (inicio) at (0,0) {Inicio};
   \node[diagrama datos,minimum width=32mm] (entrada) at (0,-1.12) {Leer \(B, n\)};
-  \node[diagrama decision] (validar) at (0,-2.57) {¿\(B<0\) o \(n<0\)?};
+  \node[diagrama decision] (validar) at (0,-2.57) {¿Entrada inválida?};
   \node[diagrama datos] (error) at (-4.8,-4.05) {Mostrar error};
   \node[diagrama proceso] (preparar) at (0,-4.05) {\(\mathrm{total} \gets 0,\ i \gets 1\)};
   \node[diagrama decision] (ciclo) at (0,-5.50) {¿\(i \leq n\)?};
-  \node[diagrama datos] (producto) at (0,-6.88) {Leer \(q, p\)};
-  \node[diagrama decision] (validarprod) at (0,-8.28) {¿\(q\leq 0\) o \(p<0\)?};
+  \node[diagrama datos] (producto) at (0,-6.88) {Leer nombre, \(q, p\)};
+  \node[diagrama decision] (validarprod) at (0,-8.28) {¿Material inválido?};
   \node[diagrama proceso] (acumular) at (0,-9.74)
     {\(\mathrm{total} \gets \mathrm{total}+qp\)\\[-.1em]\(i \gets i+1\)};
   \node[diagrama proceso] (saldo) at (4.65,-5.5) {\(\mathrm{saldo} \gets B-\mathrm{total}\)};
@@ -24,7 +24,7 @@
   \draw[diagrama flecha] (ciclo.east) -- node[diagrama rama,above] {No} (saldo.west);
   \draw[diagrama flecha] (producto) -- (validarprod);
   \draw[diagrama flecha] (validarprod.west) -- node[diagrama rama,above] {Sí}
-    (-3.45,-8.28) |- (error.east);
+    (-3.65,-8.28) |- (error.east);
   \draw[diagrama flecha] (validarprod.south) -- node[diagrama rama,right] {No} (acumular.north);
   \draw[diagrama flecha] (acumular.east) -- (1.94,-9.74)
     -- (1.94,-6.06) -- (1.0,-6.06)

@@ -23,8 +23,14 @@
       };
     \draw[Linea,line width=.55pt] ([xshift=26mm,yshift=29mm]current page.south west)
       -- ([xshift=-26mm,yshift=29mm]current page.south east);
-    \node[anchor=west,inner sep=0pt,text=Azul,font=\sffamily\bfseries\normalsize]
-      at ([xshift=26mm,yshift=20mm]current page.south west) {\AnioEdicion};
+    \node[anchor=north west,inner sep=0pt,text=Azul,text width=134mm]
+      at ([xshift=26mm,yshift=23mm]current page.south west) {%
+        \sffamily\small
+        \ifdefempty{\AutoresLibro}{}{\textbf{\AutoresLibro}\par}
+        \ifdefempty{\InstitucionLibro}{}{\InstitucionLibro\par}
+      };
+    \node[anchor=east,inner sep=0pt,text=Azul,font=\sffamily\bfseries\normalsize]
+      at ([xshift=-26mm,yshift=20mm]current page.south east) {\AnioEdicion};
   \end{tikzpicture}
   \null\vfill
 \end{titlepage}

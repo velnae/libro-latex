@@ -10,13 +10,13 @@ def calcular_total(materiales):
         total += cantidad * precio
     return total
 
-def evaluar_compra(presupuesto, total):
+def evaluar_compra(presupuesto, materiales):
     if type(presupuesto) is not int or presupuesto < 0:
         raise ValueError("Presupuesto inválido")
-    diferencia = presupuesto - total
-    if diferencia >= 0:
-        return "Compra viable", diferencia
-    return "Presupuesto insuficiente", diferencia
+    total = calcular_total(materiales)
+    saldo = presupuesto - total
+    return total, saldo, saldo >= 0
+
 
 def soles(centimos):
     signo = "-" if centimos < 0 else ""
@@ -30,16 +30,15 @@ def main():
                   ("Lápices", 10, 120),
                   ("Cartulinas", 4, 300)]
     try:
-        total = calcular_total(materiales)
-        estado, diferencia = evaluar_compra(presupuesto, total)
+        total, saldo, viable = evaluar_compra(presupuesto, materiales)
         for nombre, cantidad, precio in materiales:
             print(nombre, soles(cantidad * precio))
         print("Total:", soles(total))
-        print(estado)
-        etiqueta = "Saldo:" if diferencia >= 0 else "Exceso:"
-        print(etiqueta, soles(abs(diferencia)))
+        print("Compra viable" if viable else "Presupuesto insuficiente")
+        print("Saldo:", soles(saldo))
     except ValueError as error:
         print("Error:", error)
+
 
 if __name__ == "__main__":
     main()

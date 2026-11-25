@@ -1,30 +1,31 @@
-\begin{tablalibro}{3}{L{0.12}L{0.45}L{0.43}}
+\begin{tablalibro}{4}{L{0.10}L{0.12}L{0.39}L{0.39}}
 \caption{Matriz de pruebas del proyecto}\label{tab:matriz-de-pruebas-del-proyecto}\\
 \toprule
 \rowcolor{Papel}
-\CabeceraTabla{Caso} & \CabeceraTabla{Presupuesto / materiales (céntimos)} & \CabeceraTabla{Resultado esperado} \\
+\CabeceraTabla{Caso} & \CabeceraTabla{Regla} & \CabeceraTabla{Entrada (céntimos)} & \CabeceraTabla{Resultado esperado} \\
 \midrule
 \endfirsthead
-\SigueTabla{3}
+\SigueTabla{4}
 \toprule
 \rowcolor{Papel}
-\CabeceraTabla{Caso} & \CabeceraTabla{Presupuesto / materiales (céntimos)} & \CabeceraTabla{Resultado esperado} \\
+\CabeceraTabla{Caso} & \CabeceraTabla{Regla} & \CabeceraTabla{Entrada (céntimos)} & \CabeceraTabla{Resultado esperado} \\
 \midrule
 \endhead
 \midrule
 \endfoot
 \bottomrule
-\multicolumn{3}{@{}p{\linewidth}@{}}{\NotaLibro{Elaboración propia.}}\\
+\multicolumn{4}{@{}p{\linewidth}@{}}{\NotaLibro{La terna de resultado contiene total, saldo y viabilidad. La lista de referencia figura en la \RefTabla{tab:datos-iniciales-del-caso-practico}.}}\\
 \endlastfoot
 
-P01 & 10000 / 4650 de total & \Codigo{(4650, 5350, True)} \\
-P02 & 4650 / 4650 de total & \Codigo{(4650, 0, True)} \\
-P03 & 4000 / 4650 de total & \Codigo{(4650, -650, False)} \\
-P04 & 0 / lista vacía & \Codigo{(0, 0, True)} \\
-P05 & 1000 / cantidad \ensuremath{-}1 & \Codigo{ValueError} \\
-P06 & \ensuremath{-}1 / lista vacía & \Codigo{ValueError} \\
-P07 & 1000 / nombre vacío & \Codigo{ValueError} \\
-P08 & 1000 / cantidad 0 & \Codigo{ValueError} \\
-P09 & 1000 / precio unitario \ensuremath{-}1 & \Codigo{ValueError} \\
-P10 & 0 / dos unidades con precio 0 & \Codigo{(0, 0, True)} \\
+P01 & R3, R4 & 10000 y lista de referencia & \Codigo{(4650, 5350, True)} \\
+P02 & R4 & 4650 y lista de referencia & \Codigo{(4650, 0, True)} \\
+P03 & R4 & 4000 y lista de referencia & \Codigo{(4650, -650, False)} \\
+P04 & R1 & 0 y lista vacía & \Codigo{(0, 0, True)} \\
+P05 & R2 & 1000 y \Codigo{("Lápiz", -1, 100)} & \Codigo{ValueError} \\
+P06 & R1 & \ensuremath{-}1 y lista vacía & \Codigo{ValueError} \\
+P07 & R2 & 1000 y \Codigo{("", 1, 100)} & \Codigo{ValueError} \\
+P08 & R2 & 1000 y \Codigo{("Lápiz", 0, 100)} & \Codigo{ValueError} \\
+P09 & R2 & 1000 y \Codigo{("Lápiz", 2, -1)} & \Codigo{ValueError} \\
+P10 & R2 & 0 y \Codigo{("Lápiz", 2, 0)} & \Codigo{(0, 0, True)} \\
+P11 & R5 & Saldo \ensuremath{-}650 para formatear & \Codigo{-S/ 6.50} \\
 \end{tablalibro}

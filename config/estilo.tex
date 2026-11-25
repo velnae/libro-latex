@@ -220,10 +220,12 @@
 \newcommand{\Ejemplo}[1]{%
   \refstepcounter{ejemplo}\subsection*{Ejemplo \theejemplo. #1}}
 
-\usepackage[authoryear,round]{natbib}
-\setlength{\bibhang}{1.5em}
-\setlength{\bibsep}{.45em}
-\renewcommand{\bibsection}{\CapituloFinal{Referencias bibliográficas}}
+\usepackage{csquotes}
+\usepackage[backend=biber,style=apa]{biblatex}
+\addbibresource{referencias.bib}
+\setlength{\bibhang}{1.27cm}
+\setlength{\bibitemsep}{.45em}
+\defbibheading{bibliography}[\bibname]{\CapituloFinal{#1}}
 \usepackage[unicode,bookmarksnumbered,bookmarksopen,
   colorlinks,linkcolor=Azul,citecolor=Verde,urlcolor=Verde]{hyperref}
 \usepackage{bookmark}
@@ -232,4 +234,5 @@
   pdfsubject={\TipoManuscrito},
   pdflang={es-PE}
 }
+\ifdefempty{\AutoresLibro}{}{\hypersetup{pdfauthor={\AutoresLibro}}}
 \AtBeginDocument{\color{Tinta}\raggedright}

@@ -17,9 +17,9 @@ Los capítulos anteriores establecieron las bases para comprender un problema y 
 
 \section{De los algoritmos a los programas: estructura y organización del código}
 
-Un algoritmo describe un procedimiento de solución con independencia de un lenguaje específico. Un programa expresa dicho procedimiento mediante instrucciones que pueden ser interpretadas o ejecutadas por un sistema computacional. La implementación exige respetar la sintaxis del lenguaje y conservar el significado de las operaciones definidas durante el diseño. \citet[caps.~2 y 3]{farrell2013} relaciona la calidad de un programa con la claridad de sus instrucciones, la modularización y el empleo de estructuras de control.
+Un algoritmo describe un procedimiento de solución con independencia de un lenguaje específico. Un programa expresa dicho procedimiento mediante instrucciones que pueden ser interpretadas o ejecutadas por un sistema computacional. La implementación exige respetar la sintaxis del lenguaje y conservar el significado de las operaciones definidas durante el diseño. \textcite[caps.~2 y 3]{farrell2013} relaciona la calidad de un programa con la claridad de sus instrucciones, la modularización y el empleo de estructuras de control.
 
-En Python, las instrucciones se escriben generalmente una por línea y la sangría delimita los bloques. Un comentario comienza con \# y documenta una intención relevante; no modifica el resultado. Los nombres descriptivos facilitan la lectura. La organización inicial puede seguir tres secciones: adquisición de datos, cálculo y presentación de resultados. Más adelante se separarán estas responsabilidades en funciones.
+En Python, la sangría delimita los bloques y \Codigo{\#} introduce un comentario \parencite{python312tutorial}. Organice los primeros programas en tres pasos: adquisición de datos, cálculo y presentación de resultados. \textcite{sorva2013} recomienda hacer explícito qué sucede al ejecutar el código. Para practicarlo, anote el valor de cada variable tras su asignación y anticipe qué mostrará la última línea.
 
 \Ejemplo{Del modelo EPS al código}
 
@@ -31,11 +31,17 @@ Se desea calcular el área de un rectángulo de base 8 y altura 3, ambas en cent
 
 \input{tablas/33-correspondencia-entre-diseno-e-implementacion}
 
-Ejecute el archivo \Codigo{03-01-area.py} de la carpeta \Codigo{recursos/ejemplos/} con Python 3 o copie el listado en una celda de un cuaderno. Compruebe que las dimensiones estén en la misma unidad. Un programa sintácticamente correcto puede producir resultados incorrectos si el algoritmo no corresponde al problema.
+Desde la carpeta que contiene \Codigo{main.tex}, compruebe su instalación con \Codigo{python3 -{}-version}. En Windows, si dispone del lanzador de Python, use \Codigo{py -3 -{}-version}. Ejecute el ejemplo para comparar su salida con la predicción anterior.
+
+\begin{lstlisting}[style=libro]
+python3 recursos/ejemplos/03-01-area.py
+\end{lstlisting}
+
+En Windows puede sustituir \Codigo{python3} por \Codigo{py -3}. Si trabaja en un cuaderno, copie el listado Python en una celda. Cambie la base de 8 a 10, anticipe el área y compare el resultado al volver a ejecutar.
 
 \section{Variables, constantes y tipos de datos}
 
-Una variable es un nombre asociado a un valor durante la ejecución. En Python la asignación vincula un nombre a un objeto y no exige declarar previamente su tipo. El mismo nombre puede asociarse después a otro valor, aunque conservar un significado y tipo coherentes mejora la legibilidad. Una constante representa un dato que no debería cambiar durante el cálculo; Python utiliza convencionalmente nombres en mayúsculas para expresar esa intención, sin impedir su reasignación. \citet[cap.~2]{farrell2013} distingue los valores literales, las variables y las constantes nombradas como elementos del diseño de programas.
+Una variable es un nombre asociado a un valor durante la ejecución. En Python, la asignación vincula un nombre a un objeto sin exigir una declaración previa del tipo. Una constante representa un dato que debe conservar su valor durante el cálculo. PEP~8 recomienda escribir su nombre en mayúsculas como convención de lectura \parencite{pep8}. \textcite[cap.~2]{farrell2013} distingue los valores literales, las variables y las constantes nombradas como elementos del diseño de programas.
 
 \input{tablas/34-tipos-de-datos-basicos-en-python}
 
@@ -85,7 +91,7 @@ La instrucción \Codigo{try} permite intentar una operación que podría fallar 
 
 \section{Estructuras secuenciales: ejecución ordenada de instrucciones}
 
-Una secuencia ejecuta instrucciones una después de otra en el orden establecido. Se utiliza cuando todas las operaciones del proceso deben realizarse sin elegir entre alternativas ni repetir pasos. \citet[cap.~3]{farrell2013} presenta la secuencia, la selección y la repetición como estructuras básicas de la programación estructurada. La dependencia entre operaciones determina el orden correcto de la secuencia.
+Una secuencia ejecuta instrucciones una después de otra en el orden establecido. Se utiliza cuando todas las operaciones del proceso deben realizarse sin elegir entre alternativas ni repetir pasos. \textcite[cap.~3]{farrell2013} presenta la secuencia, la selección y la repetición como estructuras básicas de la programación estructurada. La dependencia entre operaciones determina el orden correcto de la secuencia.
 
 \Ejemplo{Consumo eléctrico}
 
@@ -101,7 +107,7 @@ El cálculo de importe depende de consumo; invertir estas instrucciones podría 
 
 \section{Estructuras selectivas: decisiones y condiciones lógicas}
 
-Una estructura selectiva determina qué instrucciones ejecutar según el resultado de una condición. La forma simple \Codigo{if} ejecuta un bloque si la condición es verdadera. La forma \Codigo{if–else} dispone de dos alternativas, y la forma \Codigo{if–elif–else} evalúa alternativas ordenadas, ejecutando únicamente la primera condición verdadera o el bloque final. \citet[cap.~4]{farrell2013} desarrolla la relación entre expresiones booleanas, operadores relacionales y selección.
+Una estructura selectiva determina qué instrucciones ejecutar según el resultado de una condición. La forma simple \Codigo{if} ejecuta un bloque si la condición es verdadera. La forma \Codigo{if–else} dispone de dos alternativas, y la forma \Codigo{if–elif–else} evalúa alternativas ordenadas, ejecutando únicamente la primera condición verdadera o el bloque final. \textcite[cap.~4]{farrell2013} desarrolla la relación entre expresiones booleanas, operadores relacionales y selección.
 
 \Ejemplo{Clasificación de existencias}
 
@@ -119,7 +125,7 @@ Error frecuente. Escribir \Codigo{if} nota >= 0 \Codigo{and} <= 20 no es válido
 
 \section{Estructuras repetitivas: ciclos, contadores y acumuladores}
 
-Un ciclo repite un bloque de instrucciones. El ciclo \Codigo{for} de Python recorre los elementos de un iterable, como una lista o un rango; \Codigo{while} repite mientras una condición sea verdadera. Un contador registra cuántas veces ocurre un evento, mientras un acumulador integra valores sucesivos, por ejemplo una suma. \citet[cap.~5]{farrell2013} analiza el control de ciclos y la acumulación de totales, así como errores de inicialización y actualización.
+Un ciclo repite un bloque de instrucciones. El ciclo \Codigo{for} de Python recorre los elementos de un iterable, como una lista o un rango; \Codigo{while} repite mientras una condición sea verdadera. Un contador registra cuántas veces ocurre un evento, mientras un acumulador integra valores sucesivos, por ejemplo una suma. \textcite[cap.~5]{farrell2013} analiza el control de ciclos y la acumulación de totales, así como errores de inicialización y actualización.
 
 \Ejemplo{Registro de gastos}
 
@@ -143,7 +149,7 @@ Se muestra una cuenta regresiva. El valor de control disminuye en cada iteració
 
 \section{Modularización de soluciones mediante funciones y procedimientos}
 
-Modularizar significa dividir la implementación en unidades con responsabilidades definidas. Una función recibe argumentos, realiza una tarea y puede devolver un resultado mediante \Codigo{return}. En Python no existe una construcción separada denominada procedimiento: una función que se utiliza principalmente por sus efectos y no devuelve explícitamente un valor retorna \Codigo{None}. \citet[cap.~2]{farrell2013} destaca la abstracción y la reutilización como ventajas de la modularización.
+Modularizar significa dividir la implementación en unidades con responsabilidades definidas. Una función recibe argumentos, realiza una tarea y puede devolver un resultado mediante \Codigo{return}. En Python no existe una construcción separada denominada procedimiento: una función que se utiliza principalmente por sus efectos y no devuelve explícitamente un valor retorna \Codigo{None}. \textcite[cap.~2]{farrell2013} destaca la abstracción y la reutilización como ventajas de la modularización.
 
 \Ejemplo{Funciones para calcular un pedido}
 
@@ -185,7 +191,7 @@ Modificar una colección mientras se recorre puede provocar errores o resultados
 
 \SeccionLibro[Caso práctico]{Caso práctico. Implementación progresiva de una solución}
 
-Control de presupuesto para la compra de materiales. Se retoma el problema desarrollado en los capítulos 1 y 2. Un aula cuenta con un presupuesto de S/ 100 y necesita registrar productos, cantidades y precios unitarios. Se debe calcular el costo total, determinar si la compra cabe en el presupuesto y comunicar el saldo o el exceso. Para garantizar la exactitud del cálculo monetario se trabaja con céntimos enteros.
+Se implementa el algoritmo del \RefCapitulo{cap:02-diseno-algoritmico} con los mismos materiales y un presupuesto de S/ 100,00. En Python, la lista de registros determina la cantidad de elementos que se recorrerán. El saldo conserva su signo para indicar el importe disponible o el faltante.
 
 \input{tablas/40-datos-del-escenario-de-trabajo}
 
@@ -209,11 +215,11 @@ Se representan los materiales como registros y se acumulan sus subtotales. Esta 
 
 \subsection{Etapa 4. Funciones y programa integrado}
 
-Se encapsulan las operaciones y se establecen reglas explícitas: presupuesto entero no negativo, nombres no vacíos, cantidades enteras positivas y precios enteros no negativos. Una lista vacía se acepta como compra sin artículos. El informe no modifica los datos originales. El siguiente programa se ejecuta de forma independiente.
+Cada elemento de la lista es una terna con nombre, cantidad y precio en céntimos. \Codigo{evaluar\_compra(presupuesto, materiales)} devuelve \Codigo{(total, saldo, viable)}. Los dos primeros valores se expresan en céntimos y el tercero es booleano. Si un dato incumple las reglas de la \RefTabla{tab:requerimientos-del-caso-practico}, la función lanza \Codigo{ValueError}. El programa separa este cálculo de la impresión del informe.
 
 \Python*{ejemplos/03-caso-integrado.py}
 
-La condición final permite ejecutar main cuando se inicia el archivo directamente, sin lanzar el informe al importar sus funciones desde otro archivo. La función \Codigo{divmod} devuelve cociente entero y resto. El formato monetario mantiene exactitud sin convertir el importe a punto flotante. Los registros tienen una estructura prevista de tres campos; la validación de estructuras arbitrarias puede ampliarse en el capítulo siguiente.
+La condición final ejecuta \Codigo{main} al iniciar directamente el archivo. Así es posible importar la función para probarla sin imprimir el informe. \Codigo{divmod} separa soles y céntimos mediante el cociente y el resto de la división entre 100.
 
 \subsection{Etapa 5. Ejecución y comprobación}
 
@@ -221,7 +227,7 @@ La condición final permite ejecutar main cuando se inicia el archivo directamen
 
 \input{tablas/41-casos-de-prueba-del-programa}
 
-El programa conserva las reglas del algoritmo original y permite incorporar nuevos materiales sin cambiar la lógica de acumulación. Como mejora posterior se propone solicitar los registros por consola y separar la validación de entradas externas de la lógica de negocio. La corrección se comprueba contrastando los resultados con el cálculo manual y ejecutando casos representativos, límite e inválidos.
+Compare el total y el saldo con la prueba de escritorio del capítulo anterior. Después, cambie el presupuesto a 4650 y a 4000 céntimos y anticipe el saldo y la viabilidad. El \RefCapitulo{cap:04-pruebas-y-mejora} automatiza estas comprobaciones y vincula los casos de prueba con sus requisitos.
 
 \SeccionLibro{Cierre del capítulo}
 
@@ -237,7 +243,7 @@ La programación convierte algoritmos en instrucciones ejecutables. Las variable
 \subsection{Preguntas de comprensión}
 
 \begin{enumerate}
-\item ¿En qué se diferencia un algoritmo de un programa?
+\item ¿Qué decisiones quedan explícitas al llevar un algoritmo a Python?
 \item ¿Por qué Python distingue un entero de una cadena de texto?
 \item ¿Qué diferencia existe entre = y ==?
 \item ¿Cómo influye la precedencia en una expresión?
@@ -273,9 +279,3 @@ La programación convierte algoritmos en instrucciones ejecutables. Las variable
 \textbf{Desafío 3.} Control de presupuesto ampliado. Extienda el caso integrador para leer materiales desde la consola, evitar códigos duplicados y mostrar el producto de mayor subtotal. Defina las reglas de desempate y las condiciones de salida. Entregue código, modelo EPS, tabla de pruebas y una breve explicación de las mejoras.
 
 Criterios de evaluación sugeridos: correspondencia con el algoritmo (25 \%), corrección de resultados (30 \%), organización y legibilidad (20 \%), validación y pruebas (20 \%), documentación (5 \%).
-
-\subsection{Fuente de consulta del capítulo}
-
-La organización conceptual se apoya en los capítulos 2 a 5 de \citet{farrell2013}.
-
-Los ejemplos de Python, las tablas, las actividades y el caso práctico son adaptaciones didácticas originales. La bibliografía complementaria queda pendiente de consulta directa.

@@ -2,9 +2,9 @@
 \label{cap:02-diseno-algoritmico}
 \chaptermark{Diseño algorítmico}
 
-Una vez comprendido y formulado un problema, es necesario establecer un procedimiento que transforme los datos disponibles en los resultados requeridos. El diseño algorítmico constituye el vínculo entre el análisis realizado en el capítulo anterior y la implementación que se abordará en el capítulo siguiente. Su propósito es construir una solución precisa, comprensible y susceptible de comprobación antes de escribir código en un lenguaje de programación. \citet{zingaro2021} se propone como lectura complementaria sobre el aprendizaje de la programación mediante problemas.
+El diseño algorítmico convierte la especificación del problema en un procedimiento comprobable. \textcite{robins2003} distinguen conocer las instrucciones de un lenguaje y saber organizarlas para resolver un problema. En este capítulo se hace explícito ese paso al planificar el recorrido de los datos y contrastarlo con resultados calculados a mano.
 
-\citet[pp.~9–10]{farrell2013} sitúa la planificación de la lógica antes de la codificación y destaca el uso del pseudocódigo, los diagramas de flujo y las pruebas de escritorio. En este capítulo se adopta ese enfoque mediante ejemplos originales vinculados con situaciones académicas, comerciales y cotidianas.
+\textcite[pp.~9–10]{farrell2013} sitúa la planificación de la lógica antes de la codificación y destaca el uso del pseudocódigo, los diagramas de flujo y las pruebas de escritorio. En este capítulo se adopta ese enfoque mediante ejemplos originales vinculados con situaciones académicas, comerciales y cotidianas.
 
 \begin{resultados}
   \begin{itemize}
@@ -38,7 +38,7 @@ DIV representa el cociente entero y MOD el residuo. El ejemplo presupone una ent
 
 Un requerimiento describe una necesidad que debe satisfacer la solución. Antes de diseñar instrucciones es necesario esclarecer qué se espera del sistema, cuáles son las reglas aplicables y cómo se determinará que el resultado es aceptable. Una solicitud como «calcular las notas» es insuficiente mientras no se definan la escala, las ponderaciones y la condición de aprobación.
 
-\citet[pp.~8–10]{farrell2013} señala la importancia de comprender las necesidades del usuario y planificar los pasos de la solución. En la práctica, esa comprensión puede documentarse mediante entrevistas, ejemplos de resultados y especificaciones de los datos.
+\textcite[pp.~8–10]{farrell2013} señala la importancia de comprender las necesidades del usuario y planificar los pasos de la solución. En la práctica, esa comprensión puede documentarse mediante entrevistas, ejemplos de resultados y especificaciones de los datos.
 
 \subsection{Requerimientos funcionales, restricciones y criterios de aceptación}
 
@@ -54,7 +54,7 @@ Una precondición establece qué debe cumplirse antes de ejecutar una operación
 
 \section{Identificación de datos de entrada, procesamiento y resultados esperados}
 
-El modelo entrada–proceso–salida (EPS) representa la transformación que realiza una solución. \citet[p.~9]{farrell2013} presenta una herramienta equivalente, denominada gráfica IPO por sus iniciales en inglés. Identificar estos componentes permite evitar cálculos innecesarios y detectar datos faltantes. La \RefFigura{fig:modelo-eps} resume los tres componentes.
+El modelo entrada–proceso–salida (EPS) representa la transformación que realiza una solución. \textcite[p.~9]{farrell2013} presenta una herramienta equivalente, denominada gráfica IPO por sus iniciales en inglés. Identificar estos componentes permite evitar cálculos innecesarios y detectar datos faltantes. La \RefFigura{fig:modelo-eps} resume los tres componentes.
 
 \FiguraLibro{04-modelo-eps}{Modelo de entrada, procesamiento y salida}{fig:modelo-eps}{Elaboración propia.}
 
@@ -82,13 +82,13 @@ La elección no depende únicamente del número de instrucciones escritas. Impor
 
 \subsection{Tres estructuras básicas}
 
-La secuencia ejecuta acciones en orden; la selección permite elegir una rama según una condición; la repetición permite ejecutar un bloque varias veces. \citet[pp.~86–95]{farrell2013} estudia estas estructuras como base de la programación estructurada. Combinarlas permite expresar soluciones complejas de forma organizada.
+La secuencia ejecuta acciones en orden; la selección permite elegir una rama según una condición; la repetición permite ejecutar un bloque varias veces. \textcite[pp.~86–95]{farrell2013} estudia estas estructuras como base de la programación estructurada. Combinarlas permite expresar soluciones complejas de forma organizada.
 
 \section{Descomposición de soluciones y refinamiento paso a paso}
 
 La descomposición de una solución divide el procedimiento general en tareas con responsabilidades delimitadas. El refinamiento sucesivo transforma cada tarea abstracta en acciones más concretas, hasta alcanzar instrucciones suficientemente precisas para su implementación. No debe confundirse con la descomposición del problema: aquella identifica necesidades; esta organiza las acciones para satisfacerlas.
 
-La modularización facilita la comprensión y la reutilización de partes de la solución \citep[pp.~48–51]{farrell2013}. En un diseño inicial puede representarse cada módulo mediante su nombre, entradas y resultados, aun cuando todavía no se haya elegido el lenguaje de programación.
+La modularización facilita la comprensión y la reutilización de partes de la solución \parencite[pp.~48–51]{farrell2013}. En un diseño inicial puede representarse cada módulo mediante su nombre, entradas y resultados, aun cuando todavía no se haya elegido el lenguaje de programación.
 
 \subsection{Ejemplo: informe de asistencia}
 
@@ -102,7 +102,7 @@ Una gráfica de jerarquía muestra responsabilidades, no necesariamente el orden
 
 \section{Representación de algoritmos mediante pseudocódigo}
 
-El pseudocódigo es una representación textual de la lógica de una solución que utiliza convenciones cercanas al lenguaje natural y a las instrucciones de programación. \citet[pp.~14–15]{farrell2013} explica su flexibilidad como herramienta de planificación. No existe una sintaxis universal; por ello, en esta obra se adoptan convenciones en español, sin exigir compatibilidad directa con un intérprete particular.
+El pseudocódigo es una representación textual de la lógica de una solución que utiliza convenciones cercanas al lenguaje natural y a las instrucciones de programación. \textcite[pp.~14–15]{farrell2013} explica su flexibilidad como herramienta de planificación. No existe una sintaxis universal; por ello, en esta obra se adoptan convenciones en español, sin exigir compatibilidad directa con un intérprete particular.
 
 \input{tablas/24-convenciones-de-pseudocodigo-del-libro}
 
@@ -126,7 +126,7 @@ Se presupone que n es un entero no negativo y cada gasto es no negativo. El cont
 
 \section{Representación gráfica mediante diagramas de flujo}
 
-El diagrama de flujo representa gráficamente las operaciones y el control de un algoritmo. \citet[pp.~16–19]{farrell2013} presenta símbolos para distinguir entrada, proceso, salida y dirección del flujo. Los diagramas ayudan a identificar rutas alternativas, conexiones incorrectas y ciclos sin condiciones de terminación.
+El diagrama de flujo representa gráficamente las operaciones y el control de un algoritmo. \textcite[pp.~16–19]{farrell2013} presenta símbolos para distinguir entrada, proceso, salida y dirección del flujo. Los diagramas ayudan a identificar rutas alternativas, conexiones incorrectas y ciclos sin condiciones de terminación.
 
 \FiguraLibro{06-simbolos-flujo}{Símbolos elementales de un diagrama de flujo}{fig:simbolos-flujo}{Elaboración propia.}
 
@@ -142,7 +142,7 @@ Para comprobar la correspondencia con el pseudocódigo, cada símbolo debe tener
 
 \section{Seguimiento manual de algoritmos mediante tablas de prueba}
 
-La prueba de escritorio consiste en simular manualmente las instrucciones del algoritmo, registrando los valores de las variables y las decisiones tomadas. \citet[p.~10]{farrell2013} la presenta como una forma de revisar la lógica antes de codificar. Una tabla de seguimiento documenta cada cambio relevante; no debe limitarse a mostrar el resultado final.
+La prueba de escritorio consiste en simular manualmente las instrucciones del algoritmo, registrando los valores de las variables y las decisiones tomadas. \textcite[p.~10]{farrell2013} la presenta como una forma de revisar la lógica antes de codificar. Una tabla de seguimiento documenta cada cambio relevante; no debe limitarse a mostrar el resultado final.
 
 \subsection{Ejemplo: suma de tres gastos}
 
@@ -182,11 +182,11 @@ La revisión final debe comprobar que todas las entradas requeridas están defin
 
 \subsection{Control de presupuesto para una compra de materiales}
 
-Se presenta una variante de implementación del caso del \RefCapitulo{cap:01-pensamiento-computacional}. Para mantener la continuidad conceptual, conserva el presupuesto de S/ 150 y el objetivo de decidir la viabilidad de la compra, pero utiliza céntimos enteros y una lista variable de productos. La variante permite concentrarse en el diseño algorítmico sin duplicar exactamente la tabla de materiales del capítulo anterior.
+Se diseña el algoritmo para el caso del \RefCapitulo{cap:01-pensamiento-computacional}. El presupuesto de S/ 100,00 y los precios de la \RefTabla{tab:datos-iniciales-del-caso-practico} se expresan en céntimos enteros. Los identificadores R1 a R5 permiten vincular los requisitos con los criterios de aceptación y las pruebas del \RefCapitulo{cap:04-pruebas-y-mejora}.
 
 \input{tablas/28-requerimientos-del-caso-practico}
 
-Se supone que los datos recibidos son numéricos enteros; en una implementación real será necesario comprobar además el formato antes de convertirlos. El presupuesto y el precio pueden ser cero. La cantidad de cada producto debe ser positiva, pero la lista vacía es válida y representa una compra sin artículos; en ese caso el total es cero.
+El conteo \(n\) indica cuántos registros se leerán. Cada registro contiene un nombre, una cantidad \(q\) y un precio unitario \(p\). El presupuesto y el precio pueden ser cero. Con \(n=0\), el recorrido termina con total cero.
 
 \Needspace{11\baselineskip}
 \subsection{Modelo EPS y estrategia}
@@ -199,7 +199,7 @@ Se selecciona un recorrido secuencial con acumulación, pues cada producto contr
 
 \Pseudocodigo{02-control-presupuesto.txt}
 
-TERMINAR indica la finalización inmediata del algoritmo y forma parte de las convenciones adoptadas en este libro. Si la lista está vacía, el algoritmo produce total cero y continúa con la evaluación del presupuesto. El saldo negativo expresa el importe faltante mediante su valor absoluto. En la salida al usuario se puede convertir cada importe de céntimos a soles, manteniendo dos decimales. La \RefFigura{fig:flujo-presupuesto} representa la misma lógica.
+\Codigo{TERMINAR} finaliza la ejecución después de mostrar un error. Para los datos válidos se calcula el saldo con su signo. El informe expresa los importes en soles con dos decimales. La \RefFigura{fig:flujo-presupuesto} representa las mismas decisiones.
 
 \subsection{Diagrama de flujo}
 
@@ -207,11 +207,11 @@ TERMINAR indica la finalización inmediata del algoritmo y forma parte de las co
 
 \subsection{Prueba de escritorio y validación}
 
-Se dispone de S/ 150,00 (15 000 céntimos). Se compran 5 cuadernos a S/ 8,00, 10 lápices a S/ 2,00 y 7 cartulinas a S/ 5,00. El total esperado es S/ 95,00 y el saldo es S/ 55,00.
+Se parte de 10\,000 céntimos y los tres materiales del escenario de referencia. La prueba de escritorio deja visible cuánto aporta cada registro al total.
 
 \input{tablas/30-seguimiento-del-caso-integrador-centimos}
 
-El saldo es \(15\,000 - 9\,500 = 5\,500\) céntimos. La compra es viable porque el saldo es mayor o igual a cero.
+El saldo es \(10\,000 - 4\,650 = 5\,350\) céntimos. La compra es viable porque el saldo es mayor o igual a cero.
 
 \input{tablas/31-comprobacion-de-escenarios-adicionales}
 
@@ -221,7 +221,7 @@ La corrección del cálculo se justifica porque después de cada iteración el a
 
 \subsection{Resumen}
 
-El diseño algorítmico transforma una especificación en un procedimiento ordenado, preciso y comprobable. El análisis de requerimientos establece las reglas y restricciones; el modelo EPS identifica los datos y las transformaciones; la selección de estrategias y el refinamiento organizan la solución. El pseudocódigo y los diagramas de flujo representan una misma lógica mediante formas diferentes. Las pruebas de escritorio permiten seguir los valores y decisiones, mientras que los casos de prueba y los argumentos de corrección ayudan a comprobar el cumplimiento de la especificación. Estas actividades preparan la implementación mediante un lenguaje de programación.
+El diseño algorítmico transforma la especificación en un procedimiento comprobable. El modelo EPS define los datos y el refinamiento ordena las operaciones. Represente el diseño como pseudocódigo o diagrama y use pruebas de escritorio para seguir sus decisiones y verificar las salidas antes de programar.
 
 \Needspace{11\baselineskip}
 \subsection{Términos clave}
@@ -248,27 +248,21 @@ El diseño algorítmico transforma una especificación en un procedimiento orden
 \subsection{Ejercicios de diseño algorítmico}
 
 \begin{enumerate}
-\item Conversión de tiempo. Diseñe un algoritmo que convierta segundos enteros no negativos a horas, minutos y segundos. Presente el modelo EPS y pruebe 0, 59, 60 y 3601.
-\item Calificaciones. Calcule un promedio ponderado de tres notas con pesos de 20 \%, 30 \% y 50 \%. Defina el dominio, el criterio de aprobación y el pseudocódigo.
-\item Inventario. Lea existencias y cantidad solicitada; determine si el pedido es posible y calcule el stock restante. Incluya igualdad y cantidades inválidas.
-\item Consumo de agua. Registre los litros consumidos durante siete días y obtenga total y promedio. Represente el ciclo y construya una tabla de seguimiento.
-\item Búsqueda. Dada una lista de códigos, encuentre la primera posición del código solicitado o indique que no existe. Pruebe una lista vacía y una con duplicados.
-\item Tarifa de transporte. Diseñe una tarifa ficticia de S/ 3 por el primer kilómetro y S/ 1 por cada kilómetro entero adicional. Defina entradas válidas, pseudocódigo y pruebas de frontera.
-\item Asistencia. Diseñe un algoritmo que calcule el porcentaje de presentes con registros P y A. Trate listas vacías y símbolos inválidos.
+\item Tiempo. Convierta segundos enteros no negativos a horas, minutos y segundos. Presente el modelo EPS y pruebe 0, 59, 60 y 3601.
+\item Calificaciones. Pondere tres notas con 20\,\%, 30\,\% y 50\,\%. Defina el dominio, el criterio de aprobación y el pseudocódigo.
+\item Inventario. A partir del stock y la solicitud, determine la viabilidad y el stock restante. Pruebe la igualdad y una cantidad inválida.
+\item Agua. Calcule el total y el promedio de siete consumos en litros. Dibuje el ciclo y trace el acumulador.
+\item Búsqueda. Devuelva la primera posición de un código o informe su ausencia. Pruebe una lista vacía y otra con duplicados.
+\item Tarifa. Calcule S/ 3 por el primer kilómetro y S/ 1 por cada kilómetro entero adicional. Defina el dominio, el pseudocódigo y las pruebas de frontera.
+\item Asistencia. Calcule el porcentaje de P en registros P y A. Trate listas vacías y símbolos inválidos.
 \end{enumerate}
 
 \subsection{Desafíos de representación y seguimiento de algoritmos}
 
-\textbf{Desafío 1.} Biblioteca escolar. Diseñe un algoritmo que determine si un préstamo está vencido a partir de dos fechas válidas, calcule los días de retraso y aplique una tarifa ficticia diaria. Declare las reglas, represente el flujo y pruebe un préstamo a tiempo, uno vencido y uno con fechas incoherentes.
+\textbf{Desafío 1.} Biblioteca escolar. A partir de dos fechas, determine si un préstamo venció y calcule el retraso y el recargo según una tarifa diaria. Dibuje el flujo y pruebe una devolución a tiempo, una tardía y una con fechas incoherentes.
 
-\textbf{Desafío 2.} Monitoreo ambiental. Una estación registra n temperaturas. Diseñe una solución que calcule el máximo, el promedio y cuántas lecturas superan un umbral dado. Defina el tratamiento de una lista vacía y trace manualmente cuatro lecturas, incluyendo valores negativos y una lectura igual al umbral.
+\textbf{Desafío 2.} Monitoreo ambiental. Calcule máximo, promedio y lecturas superiores a un umbral para \(n\) temperaturas. Trate la lista vacía y trace cuatro lecturas, con valores negativos y uno igual al umbral.
 
-\textbf{Desafío 3.} Integración. Elija una necesidad identificada en el \RefCapitulo{cap:01-pensamiento-computacional}. Elabore su especificación, diccionario de datos, modelo EPS, refinamiento, pseudocódigo y diagrama de flujo. Prepare al menos cinco casos de prueba, incluyendo un límite y una entrada inválida. Explique por qué su algoritmo termina y cómo satisface los requerimientos.
+\textbf{Desafío 3.} Integración. Elija una necesidad del \RefCapitulo{cap:01-pensamiento-computacional}. Entregue especificación, diccionario de datos, modelo EPS, refinamiento, pseudocódigo y diagrama. Incluya cinco pruebas como mínimo, con un límite y una entrada inválida. Justifique la terminación y el cumplimiento de los requisitos.
 
-Criterio de evaluación sugerido: claridad de la especificación (20 \%), coherencia del diseño (30 \%), correspondencia entre representaciones (20 \%), calidad de las pruebas (20 \%) y justificación de la solución (10 \%).
-
-\subsection{Fuente de consulta del capítulo}
-
-Las citas de este capítulo remiten a la edición de \citet{farrell2013}.
-
-Los ejemplos, tablas, diagramas y actividades son de elaboración propia. Las obras de la bibliografía complementaria quedan pendientes de consulta directa.
+\textbf{Rúbrica.} Especificación 20\,\%, diseño 30\,\%, correspondencia entre representaciones 20\,\%, pruebas 20\,\% y justificación 10\,\%.
