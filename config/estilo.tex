@@ -207,6 +207,7 @@
 \renewcommand{\listoffigures}{\CapituloFinal{Índice de figuras}\IndiceLibro{lof}}
 \makeatother
 \newcommand{\SeccionLibro}[2][]{%
+  \par\Needspace{5.5\baselineskip}%
   \section*{#2}\phantomsection
   \if\relax\detokenize{#1}\relax
     \addcontentsline{toc}{section}{#2}%
