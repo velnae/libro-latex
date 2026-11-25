@@ -122,7 +122,7 @@
 \newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1\AnchoTabla}}
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1\AnchoTabla}}
 \newenvironment{tablalibro}[2]{%
-  \par\needspace{5.3\baselineskip}\begingroup\small
+  \par\Needspace{8\baselineskip}\begingroup\small
   \setlength{\tabcolsep}{6pt}%
   \setlength{\AnchoTabla}{\dimexpr\linewidth-#1\tabcolsep-#1\tabcolsep\relax}%
   \setlength{\LTleft}{0pt}\setlength{\LTright}{\fill}%
@@ -135,7 +135,6 @@
 \newcommand{\CabeceraTabla}[1]{\sffamily\bfseries\color{Azul}#1}
 \newcommand{\NotaLibro}[1]{{\footnotesize\color{Gris}\textit{Nota.} #1}}
 \newcommand{\SigueTabla}[1]{\multicolumn{#1}{@{}l@{}}{\footnotesize\color{Gris}Tabla \thetable\space (continuación)}\\}
-\newcommand{\ContinuaTabla}[1]{\multicolumn{#1}{@{}r@{}}{\footnotesize\color{Gris}Continúa en la página siguiente.}\\}
 \newcommand{\RefTabla}[1]{\hyperref[#1]{tabla~\ref*{#1}}}
 \newcommand{\RefFigura}[1]{\hyperref[#1]{figura~\ref*{#1}}}
 \newcommand{\RefCapitulo}[1]{\hyperref[#1]{capítulo~\ref*{#1}}}
