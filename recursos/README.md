@@ -4,7 +4,7 @@ Los mismos archivos que aparecen en el PDF se pueden abrir y ejecutar con Python
 
 ## Ejemplos
 
-Desde la carpeta que contiene `main.tex`, ejecuta un ejemplo indicando su archivo.
+Desde la carpeta que contiene `main.tex`, comprueba la instalación con `python3 --version` y ejecuta un ejemplo indicando su archivo. En Windows, si tienes el lanzador de Python, usa `py -3` en lugar de `python3`.
 
 ```bash
 python3 recursos/ejemplos/03-01-area.py
@@ -36,5 +36,3 @@ python3 -m unittest -v
 Con los materiales de ejemplo, el costo total es S/ 46,50 y el saldo es S/ 53,50. El programa escribe los importes con punto decimal. Las pruebas cubren el caso habitual, el presupuesto exacto e insuficiente, una lista vacía, entradas inválidas, un precio de cero y el formato monetario.
 
 Tanto el ejemplo del capítulo 3 como el proyecto del capítulo 4 aceptan el presupuesto en céntimos y un iterable de ternas con nombre, cantidad y precio unitario en céntimos. `evaluar_compra(presupuesto, materiales)` devuelve `(total, saldo, viable)`, por ejemplo `(4650, 5350, True)`.
-
-Para practicar con un caso adicional, adapta el proyecto a un registro de préstamos o a un inventario. En el cierre de cada capítulo se encuentran los ejercicios y las indicaciones para evaluar los resultados.

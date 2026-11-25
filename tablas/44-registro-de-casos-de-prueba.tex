@@ -1,5 +1,5 @@
 \begin{tablalibro}{4}{L{0.23}L{0.22}L{0.25}L{0.30}}
-\caption{Plantilla de casos de prueba}\label{tab:plantilla-de-casos-de-prueba}\\
+\caption{Registro de casos de prueba}\label{tab:registro-de-casos-de-prueba}\\
 \toprule
 \rowcolor{Papel}
 \CabeceraTabla{ID / requisito} & \CabeceraTabla{Entrada} & \CabeceraTabla{Esperado} & \CabeceraTabla{Observado / estado} \\
@@ -14,10 +14,9 @@
 \midrule
 \endfoot
 \bottomrule
-\multicolumn{4}{@{}p{\linewidth}@{}}{\NotaLibro{Elaboración propia.}}\\
 \endlastfoot
 
-CP-01 / subtotal & 4 unidades, 350 céntimos & 1400 & 1400 / aprobado \\
-CP-02 / viabilidad & Total 1000, presupuesto 1000 & Viable, saldo 0 & Por ejecutar \\
-CP-03 / validación & Cantidad \ensuremath{-}1 & Rechazo & Por ejecutar \\
+CP-01 / subtotal & 4 unidades a 350 céntimos & 1400 céntimos & 1400 céntimos / aprobado \\
+CP-02 / viabilidad & Total y presupuesto de 1000 céntimos & Viable, saldo 0 & Viable, saldo 0 / aprobado \\
+CP-03 / validación & Cantidad \ensuremath{-}1 & Rechaza la cantidad & \Codigo{ValueError} / aprobado \\
 \end{tablalibro}

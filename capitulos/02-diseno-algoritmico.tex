@@ -56,7 +56,7 @@ Una precondición establece qué debe cumplirse antes de ejecutar una operación
 
 El modelo entrada–proceso–salida (EPS) representa la transformación que realiza una solución. \textcite[p.~9]{farrell2013} presenta una herramienta equivalente, denominada gráfica IPO por sus iniciales en inglés. Identificar estos componentes permite evitar cálculos innecesarios y detectar datos faltantes. La \RefFigura{fig:modelo-eps} resume los tres componentes.
 
-\FiguraLibro{04-modelo-eps}{Modelo de entrada, procesamiento y salida}{fig:modelo-eps}{Elaboración propia.}
+\FiguraLibro{04-modelo-eps}{Modelo de entrada, procesamiento y salida}{fig:modelo-eps}
 
 Las entradas pueden ser valores proporcionados por una persona, lecturas de sensores o registros previamente almacenados. El procesamiento incluye operaciones aritméticas, comparaciones, conteos y transformaciones. Las salidas pueden ser números, mensajes, listas o decisiones. Un valor intermedio no es necesariamente una salida: solo lo será si la especificación exige comunicarlo.
 
@@ -96,7 +96,7 @@ Una institución desea calcular el porcentaje de asistencia de un estudiante. Se
 
 \input{tablas/23-refinamiento-de-la-solucion-de-asistencia}
 
-\FiguraLibro{05-descomposicion-informe}{Descomposición jerárquica del informe de asistencia}{fig:descomposicion-informe}{Elaboración propia.}
+\FiguraLibro{05-descomposicion-informe}{Descomposición jerárquica del informe de asistencia}{fig:descomposicion-informe}
 
 Una gráfica de jerarquía muestra responsabilidades, no necesariamente el orden temporal de todas las instrucciones. Para especificar ese orden se emplea pseudocódigo o un diagrama de flujo. El refinamiento finaliza cuando las tareas pueden expresarse sin recurrir a instrucciones ambiguas como «procesar correctamente».
 
@@ -128,7 +128,7 @@ Se presupone que n es un entero no negativo y cada gasto es no negativo. El cont
 
 El diagrama de flujo representa gráficamente las operaciones y el control de un algoritmo. \textcite[pp.~16–19]{farrell2013} presenta símbolos para distinguir entrada, proceso, salida y dirección del flujo. Los diagramas ayudan a identificar rutas alternativas, conexiones incorrectas y ciclos sin condiciones de terminación.
 
-\FiguraLibro{06-simbolos-flujo}{Símbolos elementales de un diagrama de flujo}{fig:simbolos-flujo}{Elaboración propia.}
+\FiguraLibro{06-simbolos-flujo}{Símbolos elementales de un diagrama de flujo}{fig:simbolos-flujo}
 
 El óvalo delimita el comienzo o final; el paralelogramo representa entrada o salida; el rectángulo indica una operación; el rombo formula una condición. Las flechas expresan el orden de ejecución. En una decisión binaria deben rotularse las ramas, por ejemplo, Sí y No. Un conector puede reducir cruces cuando el diagrama es extenso.
 
@@ -136,7 +136,7 @@ El óvalo delimita el comienzo o final; el paralelogramo representa entrada o sa
 
 Un sensor informa una temperatura numérica en grados Celsius. Como regla ilustrativa, se genera una alerta si la temperatura es mayor o igual a 30 °C; de lo contrario se informa un estado normal. No se trata de un umbral médico ni de seguridad industrial. La \RefFigura{fig:clasificacion-umbral} muestra las dos ramas de la decisión.
 
-\FiguraLibro{07-clasificacion-umbral}{Diagrama de flujo de una clasificación por umbral}{fig:clasificacion-umbral}{Elaboración propia.}
+\FiguraLibro{07-clasificacion-umbral}{Diagrama de flujo de una clasificación por umbral}{fig:clasificacion-umbral}
 
 Para comprobar la correspondencia con el pseudocódigo, cada símbolo debe tener una instrucción equivalente y cada rama debe conducir a un resultado. Las entradas 29, 30 y 31 permiten examinar ambos caminos y el límite de la condición.
 
@@ -203,7 +203,7 @@ Se selecciona un recorrido secuencial con acumulación, pues cada producto contr
 
 \subsection{Diagrama de flujo}
 
-\FiguraLibro{08-flujo-presupuesto}{Flujo del control de presupuesto}{fig:flujo-presupuesto}{Elaboración propia.}
+\FiguraLibro{08-flujo-presupuesto}{Flujo del control de presupuesto}{fig:flujo-presupuesto}
 
 \subsection{Prueba de escritorio y validación}
 
@@ -263,6 +263,4 @@ El diseño algorítmico transforma la especificación en un procedimiento compro
 
 \textbf{Desafío 2.} Monitoreo ambiental. Calcule máximo, promedio y lecturas superiores a un umbral para \(n\) temperaturas. Trate la lista vacía y trace cuatro lecturas, con valores negativos y uno igual al umbral.
 
-\textbf{Desafío 3.} Integración. Elija una necesidad del \RefCapitulo{cap:01-pensamiento-computacional}. Entregue especificación, diccionario de datos, modelo EPS, refinamiento, pseudocódigo y diagrama. Incluya cinco pruebas como mínimo, con un límite y una entrada inválida. Justifique la terminación y el cumplimiento de los requisitos.
-
-\textbf{Rúbrica.} Especificación 20\,\%, diseño 30\,\%, correspondencia entre representaciones 20\,\%, pruebas 20\,\% y justificación 10\,\%.
+\textbf{Desafío 3.} Integración. Elija una necesidad del \RefCapitulo{cap:01-pensamiento-computacional}. Especifique los requisitos, modele los datos y refine el algoritmo. Represente la solución en pseudocódigo y en un diagrama de flujo. Incluya al menos cinco pruebas, con un caso límite y una entrada inválida. Justifique la terminación y el cumplimiento de los requisitos.

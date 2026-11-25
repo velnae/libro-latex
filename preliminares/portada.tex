@@ -3,32 +3,38 @@
   \begin{tikzpicture}[remember picture,overlay]
     \fill[Papel] (current page.south west) rectangle (current page.north east);
     \fill[Azul] (current page.north west)
-      rectangle ([yshift=-121mm]current page.north east);
-    \fill[Verde] ([yshift=-121mm]current page.north west)
-      rectangle ([yshift=-122mm]current page.north east);
+      rectangle ([yshift=-135mm]current page.north east);
+    \fill[Verde] ([yshift=-135mm]current page.north west)
+      rectangle ([yshift=-136mm]current page.north east);
     \begin{scope}[shift={([xshift=105mm,yshift=87mm]current page.south west)}]
       \node[inner sep=0pt,opacity=.27] at (2.95,1.4)
         {\includegraphics[width=99mm]{figuras/portada-codigo.png}};
       \node[inner sep=0pt] at (-.15,0)
         {\includegraphics[height=101mm]{figuras/portada-programacion.png}};
     \end{scope}
-    \node[anchor=north west,inner sep=0pt,text=white,text width=149mm]
-      at ([xshift=26mm,yshift=-25mm]current page.north west) {%
-        \sffamily\bfseries\small\MakeUppercase{\TipoManuscrito}\par
-        \vspace{13mm}
+    \node[anchor=north west,inner sep=0pt,text=white,text width=158mm]
+      at ([xshift=26mm,yshift=-23mm]current page.north west) {%
+        \sffamily\bfseries\normalsize\InstitucionLibro\par
+        \vspace{9mm}
         {\fontsize{48}{50}\selectfont\spaceskip=.28em
           \PrimeraLineaTitulo\par\SegundaLineaTitulo\par}
-        \vspace{6mm}
-        {\mdseries\fontsize{16}{21}\selectfont\SubtituloLibro\par}
+        \vspace{5mm}
+        {\mdseries\fontsize{16}{21}\selectfont
+          \PrimeraLineaSubtitulo\par\SegundaLineaSubtitulo\par}
+      };
+    \draw[white!35!Azul,line width=.45pt]
+      ([xshift=26mm,yshift=-99mm]current page.north west)
+      -- ([xshift=-26mm,yshift=-99mm]current page.north east);
+    \node[anchor=north west,inner sep=0pt,text=white,font=\sffamily\normalsize]
+      at ([xshift=26mm,yshift=-105mm]current page.north west) {%
+        \begin{tabular*}{158mm}{@{}p{75mm}@{\extracolsep{\fill}}p{75mm}@{}}
+          \PrimerAutor & \SegundoAutor\\[.9mm]
+          \TercerAutor & \CuartoAutor\\[.9mm]
+          \QuintoAutor & \SextoAutor
+        \end{tabular*}
       };
     \draw[Linea,line width=.55pt] ([xshift=26mm,yshift=29mm]current page.south west)
       -- ([xshift=-26mm,yshift=29mm]current page.south east);
-    \node[anchor=north west,inner sep=0pt,text=Azul,text width=134mm]
-      at ([xshift=26mm,yshift=23mm]current page.south west) {%
-        \sffamily\small
-        \ifdefempty{\AutoresLibro}{}{\textbf{\AutoresLibro}\par}
-        \ifdefempty{\InstitucionLibro}{}{\InstitucionLibro\par}
-      };
     \node[anchor=east,inner sep=0pt,text=Azul,font=\sffamily\bfseries\normalsize]
       at ([xshift=-26mm,yshift=20mm]current page.south east) {\AnioEdicion};
   \end{tikzpicture}

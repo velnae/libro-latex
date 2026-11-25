@@ -37,7 +37,7 @@ El resultado esperado se obtiene de la especificación o de un cálculo independ
 
 Las pruebas unitarias evalúan funciones o componentes aislados. Las pruebas de integración comprueban cómo interactúan, las pruebas del sistema evalúan el comportamiento global y las pruebas de aceptación contrastan la solución con los requisitos del usuario. El proyecto utiliza \Codigo{unittest} para agrupar y ejecutar las comprobaciones de Python \parencite{python312unittest}.
 
-\input{tablas/44-plantilla-de-casos-de-prueba}
+\input{tablas/44-registro-de-casos-de-prueba}
 
 \Ejemplo{Comprobaciones automatizadas}
 
@@ -163,11 +163,11 @@ El archivo \Codigo{presupuesto.py} conserva el contrato del \RefCapitulo{cap:03-
 \Needspace{11\baselineskip}
 \subsection{Etapa 4. Pruebas y resultados esperados}
 
+Cada fila vincula un requisito con una entrada y su resultado esperado. Los casos P01 a P03 usan los materiales de la \RefTabla{tab:datos-iniciales-del-caso-practico}. La terna del resultado contiene el total, el saldo y la viabilidad.
+
 \input{tablas/52-matriz-de-pruebas-del-proyecto}
 
 \Salida{04-proyecto-presupuesto.txt}
-
-Esta es la salida esperada para los materiales de la \RefTabla{tab:datos-iniciales-del-caso-practico}. Las pruebas del \RefAnexo{anexo:pruebas} reproducen los casos de la matriz y comprueban el formato monetario.
 
 \subsection{Etapa 5. Depuración, evaluación y mejora}
 
@@ -176,8 +176,6 @@ Supóngase que una versión inicial utilizaba \Codigo{saldo > 0} para determinar
 La función \Codigo{evaluar\_compra} recorre los \(n\) materiales. Bajo el modelo de costo constante por registro, su tiempo es \(O(n)\) y su espacio auxiliar, \(O(1)\). La colección de entrada ocupa espacio proporcional a \(n\). El cálculo acumula los subtotales sin construir una segunda lista.
 
 Una posible ampliación consiste en permitir el registro interactivo de materiales y generar un informe por categorías. Antes de implementar estas funciones se deben actualizar los requisitos, decidir cómo tratar categorías desconocidas y diseñar nuevos casos de prueba. Las reglas existentes deben mantenerse mediante pruebas de regresión.
-
-Producto final del proyecto: especificación de requisitos, pseudocódigo, archivo \Codigo{presupuesto.py}, matriz de pruebas, registro de defectos y evidencias de ejecución.
 
 \SeccionLibro{Cierre del capítulo}
 
@@ -207,6 +205,7 @@ La verificación y la validación permiten evaluar una solución desde perspecti
 \item ¿Qué propósito cumplen las pruebas de regresión?
 \end{enumerate}
 
+\Needspace{22\baselineskip}
 \subsection{Ejercicios de depuración y optimización}
 
 \begin{enumerate}
@@ -223,5 +222,3 @@ La verificación y la validación permiten evaluar una solución desde perspecti
 \subsection{Desafío integrador}
 
 Desarrolle un sistema de préstamo de libros de aula. Identifique actores, requisitos y restricciones; diseñe el algoritmo con pseudocódigo y diagrama de flujo; implemente funciones para registrar préstamos, comprobar disponibilidad y devolver ejemplares. Diseñe al menos diez casos de prueba, incluyendo límites e inválidos. Introduzca y documente un defecto lógico de manera controlada, corríjalo y ejecute las pruebas de regresión. Justifique una mejora de organización o eficiencia y presente evidencias reproducibles.
-
-Rúbrica sugerida: análisis y modelado 20 \%, implementación 25 \%, pruebas 25 \%, depuración y mejora 20 \%, documentación 10 \%.

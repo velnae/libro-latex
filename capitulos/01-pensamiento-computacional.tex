@@ -1,5 +1,4 @@
-\ParteLibro{Comprensión de problemas y diseño de soluciones}
-  {Del análisis de situaciones cotidianas a algoritmos que pueden comprobarse antes de programar.}
+\part{Comprensión de problemas y diseño de soluciones}
 
 \chapter{Fundamentos del pensamiento computacional y análisis de problemas}
 \label{cap:01-pensamiento-computacional}
@@ -27,7 +26,7 @@ Aunque estas actividades no siempre involucran el uso de computadoras, poseen ca
 
 Un problema puede definirse como una situación en la que existe una diferencia entre un estado actual y un estado deseado, cuya transformación requiere la aplicación de determinadas acciones o procedimientos. La \RefFigura{fig:elementos-problema} representa esta transición.
 
-\FiguraLibro{02-elementos-problema}{Elementos generales de un problema}{fig:elementos-problema}{Elaboración propia.}
+\FiguraLibro{02-elementos-problema}{Elementos generales de un problema}{fig:elementos-problema}
 
 Desde esta perspectiva, resolver un problema implica identificar la situación inicial, establecer el objetivo y determinar las acciones necesarias para alcanzarlo.
 
@@ -62,7 +61,7 @@ Este ejemplo demuestra que una situación cotidiana puede transformarse en una s
 
 \subsection{Etapas de la resolución de problemas}
 
-\FiguraLibro{03-etapas-resolucion}{Etapas de la resolución de problemas}{fig:etapas-resolucion}{Elaboración propia.}
+\FiguraLibro{03-etapas-resolucion}{Etapas de la resolución de problemas}{fig:etapas-resolucion}
 
 La aplicación sistemática de estas etapas facilita el desarrollo de soluciones organizadas. Cuando los resultados obtenidos no coinciden con los objetivos establecidos, es necesario revisar las decisiones adoptadas, identificar posibles errores y modificar la estrategia.
 
@@ -100,11 +99,9 @@ Una tienda necesita identificar los productos que deben reponerse. El encargado 
 
 En lugar de efectuar manualmente esta comparación para todos los productos, se propone una solución computacional que reciba los registros de existencias, compare cada cantidad con su mínimo y genere un listado con los productos que requieren atención.
 
-Entrada: Código del producto, cantidad disponible y cantidad mínima.
+La entrada contiene el código de cada producto y sus cantidades disponible y mínima.
 
-Procesamiento: Comparar la cantidad disponible con la cantidad mínima de cada producto.
-
-Salida: Listado de productos cuya cantidad disponible es inferior al mínimo.
+El programa compara ambas cantidades y devuelve una lista de los productos cuya disponibilidad está por debajo del mínimo. La tabla muestra datos ficticios para comprobar la regla.
 
 \input{tablas/06-datos-de-prueba-para-el-control-de-existencias}
 
@@ -322,4 +319,4 @@ La resolución de problemas comienza con la comprensión de una necesidad y la d
 
 \textbf{Desafío 2.} Registro de reciclaje. Una institución desea resumir la cantidad de residuos reciclables recolectados por semana y por categoría. Proponga una representación de datos, reglas de validación y una solución generalizable a distintos periodos. Explique qué datos dejaría fuera y por qué.
 
-\textbf{Desafío 3.} Integración. Seleccione una necesidad de su entorno, describa el estado inicial y el objetivo, aplique las cinco estrategias de análisis y elabore una tabla de entradas, procesos y salidas. Presente tres casos válidos y uno inválido con sus resultados esperados. La evaluación considerará claridad, coherencia, tratamiento de restricciones y posibilidad de comprobar la solución.
+\textbf{Desafío 3.} Integración. Seleccione una necesidad de su entorno, describa el estado inicial y el objetivo, aplique las cinco estrategias de análisis y elabore una tabla de entradas, procesos y salidas. Presente tres casos válidos y uno inválido con sus resultados esperados.

@@ -21,7 +21,6 @@
 \babelprovide[main,import=es]{spanish}
 \setlocalecaption{spanish}{contents}{Índice general}
 \setlocalecaption{spanish}{table}{Tabla}
-\setlocalecaption{spanish}{appendix}{Anexo}
 
 \usepackage{amsmath}
 \usepackage{unicode-math}
@@ -70,15 +69,10 @@
   {}{0pt}{}
 \titlespacing*{\subsection}{0pt}{1.9ex plus .4ex}{.55ex}
 
-\newcommand{\NotaParte}{}
-\newcommand{\DetalleParte}{%
-  \par\vspace{.8ex}{\color{Verde}\rule{19mm}{1.1pt}}\par
-  \vspace{1.6ex}\normalfont\Large\color{Gris}\raggedright\NotaParte}
 \titleformat{\part}[display]
   {\sffamily\bfseries\fontsize{35}{40}\selectfont\color{Azul}\raggedright}
   {\color{Verde}\normalfont\sffamily\bfseries\large\MakeUppercase{\partname}\enspace\thepart}
-  {1.5ex}{}[\DetalleParte]
-\newcommand{\ParteLibro}[2]{\renewcommand{\NotaParte}{#2}\part{#1}}
+  {1.5ex}{}[\endgraf\vspace{.8ex}{\color{Verde}\rule{19mm}{1.1pt}}]
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -104,7 +98,7 @@
   colbacktitle=Suave, toptitle=2mm, bottomtitle=0mm
 }
 
-% Cuadros, figuras, notas y referencias
+% Cuadros, figuras y referencias
 \usepackage{graphicx}
 \usepackage{caption}
 \DeclareCaptionFont{rotulo}{\sffamily\bfseries\color{Azul}}
@@ -133,12 +127,10 @@
   \begin{longtable}{#2}%
 }{\end{longtable}\endgroup}
 \newcommand{\CabeceraTabla}[1]{\sffamily\bfseries\color{Azul}#1}
-\newcommand{\NotaLibro}[1]{{\footnotesize\color{Gris}\textit{Nota.} #1}}
 \newcommand{\SigueTabla}[1]{\multicolumn{#1}{@{}l@{}}{\footnotesize\color{Gris}Tabla \thetable\space (continuación)}\\}
 \newcommand{\RefTabla}[1]{\hyperref[#1]{tabla~\ref*{#1}}}
 \newcommand{\RefFigura}[1]{\hyperref[#1]{figura~\ref*{#1}}}
 \newcommand{\RefCapitulo}[1]{\hyperref[#1]{capítulo~\ref*{#1}}}
-\newcommand{\RefAnexo}[1]{\hyperref[#1]{anexo~\ref*{#1}}}
 
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc}
@@ -156,16 +148,13 @@
   diagrama union/.style={draw=Gris,line width=.55pt},
   diagrama rama/.style={font=\sffamily\footnotesize,text=Gris,fill=white,inner sep=2pt}
 }
-\NewDocumentCommand{\FiguraLibro}{m m m m}{%
+\NewDocumentCommand{\FiguraLibro}{m m m}{%
   \par\addvspace{.8em}%
   \noindent\begin{minipage}{\linewidth}
     \captionsetup{type=figure}%
     \centering
     \input{figuras/#1}\par
     \caption{#2}\label{#3}%
-    \if\relax\detokenize{#4}\relax\else
-      \raggedright\NotaLibro{#4}\par
-    \fi
   \end{minipage}\par\addvspace{.8em}%
 }
 
@@ -231,8 +220,8 @@
 \usepackage{bookmark}
 \hypersetup{
   pdftitle={\TituloLibro. \SubtituloLibro},
-  pdfsubject={\TipoManuscrito},
+  pdfauthor={\AutoresLibro},
+  pdfsubject={Pensamiento computacional, diseño algorítmico y programación},
   pdflang={es-PE}
 }
-\ifdefempty{\AutoresLibro}{}{\hypersetup{pdfauthor={\AutoresLibro}}}
 \AtBeginDocument{\color{Tinta}\raggedright}

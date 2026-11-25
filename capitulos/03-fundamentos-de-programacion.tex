@@ -1,5 +1,4 @@
-\ParteLibro{Construcción, evaluación y mejora de soluciones}
-  {Del diseño a la ejecución. Construya programas, compruebe sus resultados y mejore su calidad.}
+\part{Construcción, evaluación y mejora de soluciones}
 
 \chapter{Construcción de soluciones mediante fundamentos de programación}
 \label{cap:03-fundamentos-de-programacion}
@@ -31,13 +30,7 @@ Se desea calcular el área de un rectángulo de base 8 y altura 3, ambas en cent
 
 \input{tablas/33-correspondencia-entre-diseno-e-implementacion}
 
-Desde la carpeta que contiene \Codigo{main.tex}, compruebe su instalación con \Codigo{python3 -{}-version}. En Windows, si dispone del lanzador de Python, use \Codigo{py -3 -{}-version}. Ejecute el ejemplo para comparar su salida con la predicción anterior.
-
-\begin{lstlisting}[style=libro]
-python3 recursos/ejemplos/03-01-area.py
-\end{lstlisting}
-
-En Windows puede sustituir \Codigo{python3} por \Codigo{py -3}. Si trabaja en un cuaderno, copie el listado Python en una celda. Cambie la base de 8 a 10, anticipe el área y compare el resultado al volver a ejecutar.
+Cambie la base de 8 a 10, anticipe el área y compare el resultado al volver a ejecutar el ejemplo.
 
 \section{Variables, constantes y tipos de datos}
 
@@ -276,6 +269,4 @@ La programación convierte algoritmos en instrucciones ejecutables. Las variable
 
 \textbf{Desafío 2.} Monitoreo ambiental. Registre mediciones de temperatura válidas, calcule promedio y máximo, cuente las que superan un umbral configurable y encapsule el procesamiento en funciones. Establezca una política para la lista vacía. Compare los resultados con una tabla manual.
 
-\textbf{Desafío 3.} Control de presupuesto ampliado. Extienda el caso integrador para leer materiales desde la consola, evitar códigos duplicados y mostrar el producto de mayor subtotal. Defina las reglas de desempate y las condiciones de salida. Entregue código, modelo EPS, tabla de pruebas y una breve explicación de las mejoras.
-
-Criterios de evaluación sugeridos: correspondencia con el algoritmo (25 \%), corrección de resultados (30 \%), organización y legibilidad (20 \%), validación y pruebas (20 \%), documentación (5 \%).
+\textbf{Desafío 3.} Control de presupuesto ampliado. Extienda el caso integrador para leer materiales desde la consola, detectar códigos duplicados y mostrar el producto de mayor subtotal. Defina cómo resolver los empates y terminar la entrada de datos. Compruebe ambas reglas con casos de prueba.
