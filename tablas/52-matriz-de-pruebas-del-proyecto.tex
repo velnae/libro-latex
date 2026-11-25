@@ -1,0 +1,31 @@
+\begin{tablalibro}{3}{L{0.12}L{0.45}L{0.43}}
+\caption{Matriz de pruebas del proyecto}\label{tab:matriz-de-pruebas-del-proyecto}\\
+\toprule
+\rowcolor{Papel}
+\CabeceraTabla{Caso} & \CabeceraTabla{Presupuesto / materiales (céntimos)} & \CabeceraTabla{Resultado esperado} \\
+\midrule
+\endfirsthead
+\SigueTabla{3}
+\toprule
+\rowcolor{Papel}
+\CabeceraTabla{Caso} & \CabeceraTabla{Presupuesto / materiales (céntimos)} & \CabeceraTabla{Resultado esperado} \\
+\midrule
+\endhead
+\midrule
+\ContinuaTabla{3}
+\endfoot
+\bottomrule
+\multicolumn{3}{@{}p{\linewidth}@{}}{\NotaLibro{Elaboración propia.}}\\
+\endlastfoot
+
+P01 & 10000 / 4650 de total & \Codigo{(4650, 5350, True)} \\
+P02 & 4650 / 4650 de total & \Codigo{(4650, 0, True)} \\
+P03 & 4000 / 4650 de total & \Codigo{(4650, -650, False)} \\
+P04 & 0 / lista vacía & \Codigo{(0, 0, True)} \\
+P05 & 1000 / cantidad \ensuremath{-}1 & \Codigo{ValueError} \\
+P06 & \ensuremath{-}1 / lista vacía & \Codigo{ValueError} \\
+P07 & 1000 / nombre vacío & \Codigo{ValueError} \\
+P08 & 1000 / cantidad 0 & \Codigo{ValueError} \\
+P09 & 1000 / precio unitario \ensuremath{-}1 & \Codigo{ValueError} \\
+P10 & 0 / dos unidades con precio 0 & \Codigo{(0, 0, True)} \\
+\end{tablalibro}

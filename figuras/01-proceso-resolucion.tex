@@ -1,0 +1,11 @@
+\begin{tikzpicture}[node distance=5mm]
+  \tikzset{paso/.style={diagrama bloque,text width=37mm,minimum width=42mm,minimum height=11mm}}
+  \node[paso] (problema) {Identificación\\del problema};
+  \node[paso,right=of problema] (analisis) {Análisis\\y comprensión};
+  \node[paso,right=of analisis] (diseno) {Diseño\\de la solución};
+  \node[paso,below=of diseno] (programa) {Implementación\\del programa};
+  \node[paso,left=of programa] (pruebas) {Pruebas\\y evaluación};
+  \node[paso,left=of pruebas] (mejora) {Mejora\\de la solución};
+  \foreach \origen/\destino in {problema/analisis,analisis/diseno,diseno/programa,programa/pruebas,pruebas/mejora}
+    \draw[diagrama flecha] (\origen) -- (\destino);
+\end{tikzpicture}

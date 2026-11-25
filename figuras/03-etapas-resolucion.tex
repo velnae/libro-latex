@@ -1,0 +1,10 @@
+\begin{tikzpicture}[node distance=3.4mm]
+  \tikzset{etapa/.style={diagrama bloque,minimum width=63mm,minimum height=7mm}}
+  \node[etapa] (identificar) {1. Identificar};
+  \node[etapa,below=of identificar] (comprender) {2. Comprender};
+  \node[etapa,below=of comprender] (planificar) {3. Planificar};
+  \node[etapa,below=of planificar] (ejecutar) {4. Ejecutar};
+  \node[etapa,below=of ejecutar] (evaluar) {5. Evaluar};
+  \foreach \origen/\destino in {identificar/comprender,comprender/planificar,planificar/ejecutar,ejecutar/evaluar}
+    \draw[diagrama flecha] (\origen) -- (\destino);
+\end{tikzpicture}

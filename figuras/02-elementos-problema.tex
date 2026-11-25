@@ -1,0 +1,8 @@
+\begin{tikzpicture}[node distance=8mm,
+  estado/.style={diagrama bloque,minimum width=37mm,minimum height=11mm}]
+  \node[estado] (actual) {Estado actual};
+  \node[estado,right=of actual] (proceso) {Proceso de solución};
+  \node[estado,right=of proceso] (deseado) {Estado deseado};
+  \draw[diagrama flecha] (actual) -- (proceso);
+  \draw[diagrama flecha] (proceso) -- (deseado);
+\end{tikzpicture}

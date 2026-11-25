@@ -1,0 +1,217 @@
+\chapter{Pruebas, depuración y mejora de soluciones computacionales}
+\label{cap:04-pruebas-y-mejora}
+\chaptermark{Pruebas, depuración y mejora}
+
+Un programa que se ejecuta sin mostrar errores no necesariamente resuelve el problema para el cual fue diseñado. La construcción de una solución exige comprobar que las instrucciones producen resultados coherentes, que las entradas se interpretan correctamente y que las condiciones definidas durante el análisis se respetan. La evaluación no es una actividad reservada al final: acompaña el diseño, la implementación y las modificaciones posteriores.
+
+Este capítulo desarrolla un proceso de trabajo basado en evidencias: establecer resultados esperados, ejecutar pruebas, registrar diferencias, localizar sus causas y modificar la solución sin introducir nuevos defectos. Se retoma el control de presupuesto de materiales desarrollado en los capítulos anteriores, ahora como un problema integral de calidad de software.
+
+\citet[pp.~12–13]{farrell2013} explica que una ejecución satisfactoria con un conjunto de datos no permite concluir que toda la lógica sea correcta. Esta observación fundamenta la necesidad de elegir cuidadosamente los datos de prueba.
+
+\subsection{Resultados de aprendizaje}
+
+\section{Importancia de la verificación y validación de programas}
+
+La verificación consiste en comprobar que una solución cumple las especificaciones establecidas. La validación, en cambio, busca determinar si la solución satisface la necesidad real de las personas que la utilizarán. Ambas perspectivas se complementan: una aplicación puede cumplir perfectamente una especificación que no representa adecuadamente el problema original.
+
+En un sistema de presupuesto, verificar significa comprobar que el total corresponde a la suma de los subtotales y que una compra exactamente igual al presupuesto se considera viable. Validar significa confirmar con el usuario que el informe contiene la información necesaria para decidir si puede efectuar la compra y que las unidades monetarias son comprensibles.
+
+La verificación puede realizarse sin ejecutar el programa mediante revisión de requisitos, inspección de código y pruebas de escritorio. También puede realizarse dinámicamente, ejecutando funciones con datos seleccionados. La validación incorpora escenarios de uso, revisión de prototipos y comprobación de los criterios de aceptación con los interesados.
+
+\input{tablas/43-verificacion-y-validacion}
+
+Principio de calidad. Una prueba exitosa aporta evidencia para un caso concreto; no demuestra por sí sola la ausencia de defectos.
+
+\section{Diseño de casos de prueba y resultados esperados}
+
+Un caso de prueba describe las condiciones necesarias para evaluar un comportamiento específico. Debe identificar el requisito, los datos de entrada, las precondiciones, las acciones y el resultado esperado. Después de ejecutar la solución se registra el resultado observado y se determina si coincide con la expectativa.
+
+El resultado esperado se obtiene de la especificación o de un cálculo independiente, no copiando el resultado producido por el programa. De lo contrario, un error podría convertirse en una expectativa equivocada. En el ejemplo de presupuesto, si se solicitan cuatro unidades de 350 céntimos, el resultado esperado es 1400 céntimos, calculado antes de la ejecución.
+
+Las pruebas unitarias evalúan funciones o componentes aislados; las pruebas de integración comprueban su interacción; las pruebas del sistema evalúan el comportamiento global; y las pruebas de aceptación se centran en la utilidad frente a los requisitos del usuario.
+
+\input{tablas/44-plantilla-de-casos-de-prueba}
+
+\Ejemplo{Comprobaciones automatizadas}
+
+\Python{ejemplos/04-01-comprobaciones.py}
+
+La instrucción \Codigo{assert} interrumpe la ejecución con \Codigo{AssertionError} cuando la condición es falsa. Es adecuada para comprobar expectativas durante el desarrollo, pero no debe sustituir las validaciones de entradas del usuario, pues las aserciones pueden desactivarse al ejecutar Python con optimización.
+
+\section{Pruebas con datos normales, límites e inválidos}
+
+Los datos normales representan situaciones habituales dentro del dominio permitido. Los datos límite se encuentran en los extremos del intervalo válido o inmediatamente junto a ellos. Los datos inválidos incumplen las restricciones del problema y deben rechazarse de manera controlada.
+
+La técnica de particiones de equivalencia agrupa entradas que se espera sean tratadas de forma semejante. Por ejemplo, para una calificación entera entre 0 y 20, los valores menores que cero forman una clase inválida, los valores de 0 a 20 una clase válida y los superiores a 20 otra clase inválida. El análisis de valores límite selecciona valores próximos a los puntos donde cambia el comportamiento.
+
+Estas técnicas reducen la cantidad de casos necesarios sin garantizar cobertura exhaustiva. Si existen varias entradas relacionadas, también deben probarse combinaciones relevantes: una compra con presupuesto cero, una lista vacía o una cantidad positiva con precio cero, según las reglas acordadas.
+
+\input{tablas/45-pruebas-para-una-nota-entera-de-0-a-20}
+
+\Python{ejemplos/04-validacion-nota.py}
+
+Se emplea type(nota) is \Codigo{int} para excluir expresamente los booleanos, que en Python son una subclase de \Codigo{int}. Esta decisión responde a la especificación ficticia del ejemplo; no se presupone que todas las instituciones utilicen calificaciones enteras.
+
+\section{Seguimiento de la ejecución y análisis de resultados}
+
+El seguimiento permite observar cómo cambian los valores internos durante la ejecución. En una prueba de escritorio se recorren manualmente las instrucciones, registrando el estado de las variables, las condiciones evaluadas y las salidas. Esta práctica facilita detectar discrepancias antes de ejecutar el código \citep[cap.~1]{farrell2013}.
+
+En los ciclos resulta especialmente importante distinguir el estado anterior y posterior de un acumulador. Un total inicial incorrecto, una actualización duplicada o una condición que omite el último elemento pueden afectar todos los resultados posteriores.
+
+\Python{ejemplos/04-seguimiento.py}
+
+\input{tablas/46-seguimiento-del-acumulador}
+
+El invariante del ciclo establece que, después de procesar k elementos, total equivale a la suma de los primeros k importes. Al finalizar, los tres elementos han sido procesados y el acumulador debe ser 4650. Si se observa un valor diferente, se compara la primera iteración divergente con la tabla para reducir el espacio de búsqueda del defecto.
+
+\section{Identificación y clasificación de errores: sintaxis, ejecución y lógica}
+
+Los errores de sintaxis se producen cuando las instrucciones no respetan las reglas gramaticales del lenguaje. En Python, omitir los dos puntos al final de una condición impide que el código sea interpretado correctamente. Los errores de ejecución aparecen cuando una operación no puede realizarse bajo las condiciones presentes, por ejemplo, al dividir entre cero o consultar una posición inexistente de una lista.
+
+Los errores lógicos son discrepancias entre el comportamiento implementado y el requerido. El programa puede ejecutarse normalmente, pero producir una respuesta incorrecta. \citet[p.~13]{farrell2013} destaca que incluso una operación equivocada puede coincidir accidentalmente con el resultado esperado para una entrada específica.
+
+No toda excepción implica un defecto de diseño: una entrada inválida puede generar deliberadamente una excepción controlada para impedir que el programa continúe con datos inconsistentes. El problema surge cuando la situación no se prevé o no se gestiona de acuerdo con los requisitos.
+
+\input{tablas/47-clasificacion-de-errores}
+
+\section{Técnicas básicas de depuración y corrección de errores}
+
+Depurar consiste en localizar la causa de un defecto y corregirla. No es suficiente modificar instrucciones hasta que desaparezca el síntoma; es necesario identificar por qué se produce y comprobar que la corrección no afecta otros comportamientos. \citet[p.~13]{farrell2013} relaciona la depuración con la ejecución de múltiples conjuntos de datos.
+
+El procedimiento recomendado comienza por reproducir el error con una entrada pequeña. Se compara el resultado con la expectativa, se formula una hipótesis sobre la causa y se examinan los estados intermedios. Luego se modifica únicamente lo necesario y se repite la prueba original, junto con las demás pruebas relacionadas.
+
+\begin{enumerate}
+\item Reproducir: registrar entrada, salida y mensaje de error.
+\item Localizar: identificar el módulo y la primera instrucción que genera un estado incorrecto.
+\item Explicar: formular una hipótesis que pueda comprobarse.
+\item Corregir: aplicar un cambio concreto y justificado.
+\item Comprobar: ejecutar nuevamente las pruebas y registrar el resultado.
+\end{enumerate}
+
+\Ejemplo{Error en una condición límite}
+
+\Python{ejemplos/04-02-condicion-limite.py}
+
+La primera versión rechaza una compra que utiliza exactamente el presupuesto. El caso de frontera permite reproducir el defecto y comprobar la corrección. Para programas más amplios, un depurador permite establecer puntos de interrupción, ejecutar instrucciones paso a paso e inspeccionar variables sin agregar múltiples llamadas a \Codigo{print}.
+
+\section{Calidad del código: legibilidad, organización, documentación y reutilización}
+
+Un programa de calidad no solo calcula resultados correctos; también permite comprender, modificar y comprobar su funcionamiento. Los nombres expresivos, las funciones de responsabilidad definida y los comentarios pertinentes favorecen el mantenimiento. \citet[pp.~63–64]{farrell2013} vincula el buen diseño con la selección cuidadosa de identificadores, la claridad de las instrucciones y la documentación apropiada.
+
+La legibilidad disminuye el esfuerzo requerido para entender la intención de una instrucción. La organización separa las responsabilidades y evita dependencias innecesarias. La documentación explica contratos, restricciones y decisiones que no resultan evidentes a partir del código. La reutilización permite emplear funciones en distintos escenarios sin copiar su implementación.
+
+La refactorización modifica la estructura interna de un programa sin cambiar su comportamiento observable. Debe apoyarse en pruebas que documenten ese comportamiento antes del cambio. Una función pequeña no es necesariamente mejor si fragmenta artificialmente una operación simple; el propósito es facilitar la comprensión y reducir duplicidades.
+
+\Python{ejemplos/04-calidad-subtotal.py}
+
+\input{tablas/48-criterios-de-revision-de-codigo}
+
+\section{Introducción a la eficiencia de los algoritmos y al costo computacional}
+
+La eficiencia describe los recursos necesarios para ejecutar una solución, principalmente tiempo y memoria. El costo depende del algoritmo, del tamaño de los datos, de la implementación y del entorno de ejecución. El análisis asintótico permite estudiar cómo crece el costo cuando aumenta el tamaño n de la entrada, sin depender de una computadora específica.
+
+La notación O grande representa una cota superior asintótica. En este nivel introductorio se utiliza para comparar órdenes de crecimiento de algoritmos sencillos. Un acceso a una posición conocida de una lista de Python requiere tiempo constante O(1), mientras que recorrer todos sus elementos requiere tiempo lineal O(n). Dos recorridos anidados de n elementos pueden producir un costo cuadrático O(n²). Una búsqueda binaria en una secuencia ordenada con acceso aleatorio reduce aproximadamente a la mitad el espacio de búsqueda en cada paso y tiene costo O(log n).
+
+\input{tablas/49-ordenes-de-crecimiento-ilustrativos}
+
+Las cifras representan conteos ilustrativos de operaciones dominantes, no tiempos medidos. Los costos constantes y el trabajo de preparación también pueden ser importantes. Ordenar una colección para realizar una sola búsqueda no necesariamente mejora el costo total.
+
+\Python{ejemplos/04-busqueda.py}
+
+En el peor caso se examinan n elementos, mientras que en el mejor se examina uno. Si se realizarán muchas consultas de pertenencia, un conjunto puede ofrecer búsquedas de costo promedio constante, a cambio de memoria adicional y un costo inicial de construcción. La elección debe considerar el patrón real de uso.
+
+\section{Evaluación y mejora de soluciones mediante pruebas iterativas}
+
+La mejora iterativa consiste en evaluar una versión, identificar oportunidades, aplicar cambios y volver a comprobar la solución. Una línea base de resultados permite comparar versiones con criterios consistentes. Las pruebas de regresión comprueban que una modificación no haya deteriorado comportamientos previamente correctos.
+
+Es recomendable registrar la versión, el defecto identificado, el cambio realizado y los resultados de las pruebas. Cuando se desea mejorar el rendimiento, se debe utilizar el mismo conjunto de datos y condiciones comparables, repetir mediciones y distinguir entre una mejora observada y una expectativa teórica.
+
+En un programa que procesa materiales, una primera versión puede calcular el total correctamente, pero aceptar cantidades negativas. Una segunda versión incorpora validación; una tercera separa el cálculo de la presentación de resultados. Cada cambio responde a un criterio verificable y conserva las reglas ya aprobadas.
+
+\input{tablas/50-registro-de-mejora-iterativa}
+
+\SeccionLibro[Proyecto integrador]{Proyecto integrador. Control de presupuesto para materiales}\label{sec:proyecto-integrador}
+
+El proyecto retoma la situación de los capítulos 1 a 3: un aula necesita decidir si puede adquirir un conjunto de materiales con un presupuesto disponible. La solución integra las etapas del pensamiento computacional, el diseño algorítmico, la implementación y la evaluación. Se utilizan céntimos enteros para evitar imprecisiones de representación monetaria mediante números de punto flotante.
+
+El alcance se limita a una aplicación de consola con datos en memoria. No incluye persistencia, impuestos, descuentos ni autenticación. Estas restricciones simplifican la evaluación y permiten concentrarse en la corrección del algoritmo.
+
+\subsection{Etapa 1. Análisis y especificación}
+
+\input{tablas/51-requisitos-del-proyecto}
+
+\subsection{Etapa 2. Modelado de la solución}
+
+\Pseudocodigo{04-proyecto-presupuesto.txt}
+
+La descomposición separa la validación, el cálculo y la presentación. La entrada consiste en el presupuesto y una colección de materiales; el procesamiento incluye validaciones, multiplicación, acumulación y comparación; la salida incluye total, saldo y condición de viabilidad. El nombre debe contener texto y la cantidad de cada material debe ser un entero positivo. El presupuesto y el precio unitario son enteros no negativos. Una lista vacía representa una compra con total cero.
+
+\subsection{Etapa 3. Implementación en Python}
+
+\Python*{proyecto/presupuesto.py}
+
+El listado corresponde al archivo \Codigo{presupuesto.py} incluido en los recursos. La función recibe una colección iterable de registros con tres campos. Una interfaz que lea archivos o texto externo también debe comprobar la estructura de cada registro.
+
+\subsection{Etapa 4. Pruebas y resultados esperados}
+
+\input{tablas/52-matriz-de-pruebas-del-proyecto}
+
+\Salida{04-proyecto-presupuesto.txt}
+
+Esta es la salida esperada del escenario de referencia. Las pruebas del \RefAnexo{anexo:pruebas} permiten reproducir los demás casos de la matriz. Véase la \RefTabla{tab:matriz-de-pruebas-del-proyecto}.
+
+\subsection{Etapa 5. Depuración, evaluación y mejora}
+
+Supóngase que una versión inicial utilizaba saldo > 0 para determinar la viabilidad. La prueba P02 revelaría que el programa rechaza una compra de presupuesto exacto. El defecto se localiza en la condición de retorno y se corrige a saldo >= 0. Se vuelven a ejecutar las pruebas P01 a P10 para comprobar que la modificación no altera las demás reglas.
+
+La función \Codigo{evaluar\_compra} recorre los \(n\) materiales. Bajo el modelo de costo constante por registro, su tiempo es \(O(n)\) y su espacio auxiliar, \(O(1)\). La colección de entrada ocupa espacio proporcional a \(n\). El cálculo acumula los subtotales sin construir una segunda lista.
+
+Una posible ampliación consiste en permitir el registro interactivo de materiales y generar un informe por categorías. Antes de implementar estas funciones se deben actualizar los requisitos, decidir cómo tratar categorías desconocidas y diseñar nuevos casos de prueba. Las reglas existentes deben mantenerse mediante pruebas de regresión.
+
+Producto final del proyecto: especificación de requisitos, pseudocódigo, archivo \Codigo{presupuesto.py}, matriz de pruebas, registro de defectos y evidencias de ejecución.
+
+\SeccionLibro{Cierre del capítulo}
+
+\subsection{Resumen}
+
+La verificación y la validación permiten evaluar una solución desde perspectivas complementarias. El diseño de casos de prueba exige resultados esperados independientes, datos normales, límites e inválidos. La depuración identifica y corrige causas de errores, mientras que la refactorización y el análisis de eficiencia favorecen la mantenibilidad y el uso adecuado de recursos. El proyecto integrador demuestra cómo estas prácticas se vinculan con el análisis, el diseño y la implementación de una solución.
+
+\subsection{Términos clave}
+
+\input{tablas/53-glosario-del-capitulo-4}
+
+\subsection{Preguntas de comprensión}
+
+\begin{enumerate}
+\item ¿En qué se distinguen verificación y validación?
+\item ¿Por qué una ejecución correcta no garantiza la ausencia de defectos?
+\item ¿Cómo se establece un resultado esperado independiente?
+\item ¿Qué diferencia existe entre pruebas unitarias y de integración?
+\item ¿Qué datos utilizaría para probar un intervalo cerrado?
+\item ¿Qué información contiene una tabla de seguimiento?
+\item ¿Cómo se distingue un error lógico de uno de ejecución?
+\item ¿Qué ventajas tiene reproducir un defecto antes de modificar el código?
+\item ¿Qué caracteriza una refactorización?
+\item ¿Qué representa O(n) en un recorrido de datos?
+\item ¿Cuándo es conveniente utilizar un conjunto para búsquedas?
+\item ¿Qué propósito cumplen las pruebas de regresión?
+\end{enumerate}
+
+\subsection{Ejercicios de depuración y optimización}
+
+\begin{enumerate}
+\item Una función de promedio divide entre \Codigo{len(notas)}. Reproduzca el error con una lista vacía y defina un comportamiento válido.
+\item Un contador empieza en 1 y aumenta por cada asistencia. Identifique el defecto con una tabla de seguimiento.
+\item Una función de descuento utiliza monto + descuento. Diseñe dos pruebas que revelen el error y corrija la expresión.
+\item Una condición de aprobación utiliza nota > 11, aunque el requisito admite 11. Compruebe los valores 10, 11 y 12.
+\item Refactorice un programa que repite el cálculo de subtotales en tres lugares; conserve su comportamiento.
+\item Compare un recorrido simple y dos recorridos anidados sobre n elementos. Cuente operaciones para n = 5 y n = 20.
+\item Diseñe pruebas para una búsqueda de productos por código, incluyendo colección vacía, código ausente y coincidencia.
+\item Extienda el programa integrador para informar el número de materiales sin modificar los resultados previos.
+\end{enumerate}
+
+\subsection{Desafío integrador}
+
+Desarrolle un sistema de préstamo de libros de aula. Identifique actores, requisitos y restricciones; diseñe el algoritmo con pseudocódigo y diagrama de flujo; implemente funciones para registrar préstamos, comprobar disponibilidad y devolver ejemplares. Diseñe al menos diez casos de prueba, incluyendo límites e inválidos. Introduzca y documente un defecto lógico de manera controlada, corríjalo y ejecute las pruebas de regresión. Justifique una mejora de organización o eficiencia y presente evidencias reproducibles.
+
+Rúbrica sugerida: análisis y modelado 20 \%, implementación 25 \%, pruebas 25 \%, depuración y mejora 20 \%, documentación 10 \%.

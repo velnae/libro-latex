@@ -1,0 +1,24 @@
+\begin{tablalibro}{3}{L{0.31}L{0.39}L{0.30}}
+\caption{Modelo EPS para un pedido de cafetería}\label{tab:modelo-eps-para-un-pedido-de-cafeteria}\\
+\toprule
+\rowcolor{Papel}
+\CabeceraTabla{Entrada} & \CabeceraTabla{Proceso} & \CabeceraTabla{Salida} \\
+\midrule
+\endfirsthead
+\SigueTabla{3}
+\toprule
+\rowcolor{Papel}
+\CabeceraTabla{Entrada} & \CabeceraTabla{Proceso} & \CabeceraTabla{Salida} \\
+\midrule
+\endhead
+\midrule
+\ContinuaTabla{3}
+\endfoot
+\bottomrule
+\multicolumn{3}{@{}p{\linewidth}@{}}{\NotaLibro{Elaboración propia.}}\\
+\endlastfoot
+
+Cantidad entera positiva; precio unitario no negativo & Validar los datos y multiplicar cantidad por precio & Subtotal en soles \\
+Subtotal y tasa de descuento definida & Aplicar descuento y calcular importe final & Descuento e importe final \\
+Dato fuera del dominio & Interrumpir el cálculo & Mensaje de error \\
+\end{tablalibro}

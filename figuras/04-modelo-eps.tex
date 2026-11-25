@@ -1,0 +1,8 @@
+\begin{tikzpicture}[node distance=8mm]
+  \tikzset{componente/.style={diagrama bloque,minimum width=41mm,minimum height=13mm}}
+  \node[componente] (entrada) {\textbf{Entrada}\\ Datos y parámetros};
+  \node[componente,right=of entrada] (proceso) {\textbf{Proceso}\\ Reglas y operaciones};
+  \node[componente,right=of proceso] (salida) {\textbf{Salida}\\ Resultados y mensajes};
+  \draw[diagrama flecha] (entrada) -- (proceso);
+  \draw[diagrama flecha] (proceso) -- (salida);
+\end{tikzpicture}

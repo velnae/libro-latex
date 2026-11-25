@@ -1,0 +1,26 @@
+\begin{tablalibro}{3}{L{0.26}L{0.26}L{0.48}}
+\caption{Diccionario de datos del pedido}\label{tab:diccionario-de-datos-del-pedido}\\
+\toprule
+\rowcolor{Papel}
+\CabeceraTabla{Identificador} & \CabeceraTabla{Tipo conceptual} & \CabeceraTabla{Dominio o significado} \\
+\midrule
+\endfirsthead
+\SigueTabla{3}
+\toprule
+\rowcolor{Papel}
+\CabeceraTabla{Identificador} & \CabeceraTabla{Tipo conceptual} & \CabeceraTabla{Dominio o significado} \\
+\midrule
+\endhead
+\midrule
+\ContinuaTabla{3}
+\endfoot
+\bottomrule
+\multicolumn{3}{@{}p{\linewidth}@{}}{\NotaLibro{Elaboración propia.}}\\
+\endlastfoot
+
+cantidad & Entero & Mayor que cero \\
+precio & Decimal & Soles, mayor o igual a cero \\
+subtotal & Decimal & cantidad × precio \\
+tasa & Decimal & Entre 0 y 1 \\
+total & Decimal & subtotal × (1 \ensuremath{-} tasa) \\
+\end{tablalibro}

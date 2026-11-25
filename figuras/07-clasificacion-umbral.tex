@@ -1,0 +1,14 @@
+\begin{tikzpicture}
+  \node[diagrama terminal] (inicio) at (0,0) {Inicio};
+  \node[diagrama datos,minimum width=36mm] (entrada) at (0,-1.35) {Leer temperatura};
+  \node[diagrama decision] (umbral) at (0,-3.00) {¿Temperatura \(\geq 30\,^{\circ}\mathrm{C}\)?};
+  \node[diagrama datos,minimum width=35mm] (alerta) at (-3.15,-4.8) {Mostrar alerta};
+  \node[diagrama datos,minimum width=35mm] (normal) at (3.15,-4.8) {Mostrar normal};
+  \node[diagrama terminal] (fin) at (0,-6.05) {Fin};
+  \draw[diagrama flecha] (inicio) -- (entrada);
+  \draw[diagrama flecha] (entrada) -- (umbral);
+  \draw[diagrama flecha] (umbral.west) -| node[diagrama rama,pos=.25,above] {Sí} (alerta.north);
+  \draw[diagrama flecha] (umbral.east) -| node[diagrama rama,pos=.25,above] {No} (normal.north);
+  \draw[diagrama flecha] (alerta.south) |- (fin.west);
+  \draw[diagrama flecha] (normal.south) |- (fin.east);
+\end{tikzpicture}

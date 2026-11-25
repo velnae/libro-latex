@@ -1,0 +1,280 @@
+\ParteLibro{Construcción, evaluación y mejora de soluciones}
+  {Del diseño a la ejecución. Construya programas, compruebe sus resultados y mejore su calidad.}
+
+\chapter{Construcción de soluciones mediante fundamentos de programación}
+\label{cap:03-fundamentos-de-programacion}
+\chaptermark{Fundamentos de programación}
+
+Los capítulos anteriores establecieron las bases para comprender un problema y diseñar su solución. En este capítulo se transforma ese diseño en instrucciones ejecutables. Se utiliza Python 3 como lenguaje de aprendizaje, manteniendo el vínculo entre el modelo de entrada, procesamiento y salida, el algoritmo y su implementación. El objetivo no es memorizar instrucciones aisladas, sino comprender cómo se combinan para construir una solución coherente.
+
+\begin{resultados}
+  \begin{itemize}
+    \item Traducir algoritmos a código Python y seleccionar tipos de datos y operadores.
+    \item Implementar secuencias, decisiones y ciclos.
+    \item Definir funciones, manipular colecciones y comprobar resultados con datos de prueba.
+  \end{itemize}
+\end{resultados}
+
+\section{De los algoritmos a los programas: estructura y organización del código}
+
+Un algoritmo describe un procedimiento de solución con independencia de un lenguaje específico. Un programa expresa dicho procedimiento mediante instrucciones que pueden ser interpretadas o ejecutadas por un sistema computacional. La implementación exige respetar la sintaxis del lenguaje y conservar el significado de las operaciones definidas durante el diseño. \citet[caps.~2 y 3]{farrell2013} relaciona la calidad de un programa con la claridad de sus instrucciones, la modularización y el empleo de estructuras de control.
+
+En Python, las instrucciones se escriben generalmente una por línea y la sangría delimita los bloques. Un comentario comienza con \# y documenta una intención relevante; no modifica el resultado. Los nombres descriptivos facilitan la lectura. La organización inicial puede seguir tres secciones: adquisición de datos, cálculo y presentación de resultados. Más adelante se separarán estas responsabilidades en funciones.
+
+\Ejemplo{Del modelo EPS al código}
+
+Se desea calcular el área de un rectángulo de base 8 y altura 3, ambas en centímetros. El algoritmo recibe las dimensiones, multiplica sus valores y comunica el área. La versión siguiente usa datos fijos para comprobar primero la lógica.
+
+\Python{ejemplos/03-01-area.py}
+
+\textbf{Resultado esperado.} Área: 24 cm².
+
+\input{tablas/33-correspondencia-entre-diseno-e-implementacion}
+
+Ejecute el archivo \Codigo{03-01-area.py} de la carpeta \Codigo{recursos/ejemplos/} con Python 3 o copie el listado en una celda de un cuaderno. Compruebe que las dimensiones estén en la misma unidad. Un programa sintácticamente correcto puede producir resultados incorrectos si el algoritmo no corresponde al problema.
+
+\section{Variables, constantes y tipos de datos}
+
+Una variable es un nombre asociado a un valor durante la ejecución. En Python la asignación vincula un nombre a un objeto y no exige declarar previamente su tipo. El mismo nombre puede asociarse después a otro valor, aunque conservar un significado y tipo coherentes mejora la legibilidad. Una constante representa un dato que no debería cambiar durante el cálculo; Python utiliza convencionalmente nombres en mayúsculas para expresar esa intención, sin impedir su reasignación. \citet[cap.~2]{farrell2013} distingue los valores literales, las variables y las constantes nombradas como elementos del diseño de programas.
+
+\input{tablas/34-tipos-de-datos-basicos-en-python}
+
+\Ejemplo{Datos de un pedido}
+
+Las cantidades son enteras; el nombre del producto es texto y el estado de disponibilidad es lógico. Para el dinero se emplean céntimos enteros, evitando errores de representación binaria de decimales.
+
+\Python{ejemplos/03-02-datos-pedido.py}
+
+\textbf{Resultado esperado.} Cuaderno 1350 \Codigo{True}.
+
+Los identificadores no pueden comenzar por un dígito ni contener espacios. Se recomienda snake\_case, por ejemplo cantidad\_total. Los nombres distinguen mayúsculas y minúsculas. La función type() permite examinar el tipo de un valor, mientras \Codigo{int}(), \Codigo{float}() y \Codigo{str}() convierten valores compatibles. No todos los textos representan números: \Codigo{int}("tres") genera una excepción \Codigo{ValueError}.
+
+Buena práctica. No confunda una representación textual con un valor numérico. El código de estudiante "00123" debe conservarse como texto si sus ceros iniciales son significativos.
+
+\section{Operadores, expresiones y evaluación de resultados}
+
+Una expresión combina valores, nombres y operadores para producir un resultado. Los operadores aritméticos permiten calcular; los relacionales comparan valores y producen resultados booleanos; los lógicos combinan condiciones. La asignación = no equivale a la comparación ==. Las operaciones deben corresponder a las reglas del problema, no únicamente a las posibilidades del lenguaje.
+
+\input{tablas/35-operadores-de-uso-frecuente}
+
+La precedencia determina qué operación se realiza primero. En expresiones usuales, la potencia precede a multiplicación y división, estas preceden a suma y resta, y las comparaciones se evalúan antes de las combinaciones booleanas. Dentro de los operadores lógicos, \Codigo{not} precede a \Codigo{and} y este a \Codigo{or}. Los paréntesis permiten explicitar la intención y reducir ambigüedades. Debe evitarse la división por cero.
+
+\Ejemplo{Promedio ponderado}
+
+Tres evaluaciones tienen pesos de 20 \%, 30 \% y 50 \%. Se calcula el promedio sin redondearlo antes de decidir la aprobación. El umbral 11 es únicamente una regla ficticia del ejercicio.
+
+\Python{ejemplos/03-03-promedio.py}
+
+\textbf{Resultado esperado.} Promedio: 14.40; Aprobado: \Codigo{True}.
+
+En Python, \Codigo{and} y \Codigo{or} aplican evaluación de cortocircuito. Si una condición ya determina el resultado, la segunda puede no evaluarse. Por ejemplo, \Codigo{divisor != 0 and total / divisor > 5} evita calcular una división inválida cuando el divisor es cero. Esta propiedad no sustituye el análisis del dominio de los datos.
+
+\section{Entrada y salida de información}
+
+La entrada permite obtener datos del usuario o de otras fuentes. La salida comunica resultados, mensajes de error o estados del proceso. En una aplicación de consola, \Codigo{input()} recibe una línea de texto y \Codigo{print()} presenta información. Por tanto, la conversión de tipos es necesaria antes de realizar cálculos con una entrada numérica. Un mensaje de solicitud debe indicar qué dato se espera y en qué unidad.
+
+\Ejemplo{Conversión de minutos}
+
+Se solicita una cantidad entera de minutos no negativa y se convierte a horas y minutos. La captura de \Codigo{ValueError} distingue un formato inválido de un número fuera del dominio.
+
+\Python{ejemplos/03-04-conversion-minutos.py}
+
+\textbf{Resultado esperado.} Si se ingresa 135: 2 h y 15 min.
+
+La instrucción \Codigo{try} permite intentar una operación que podría fallar y \Codigo{except} \Codigo{ValueError} gestiona este tipo particular de error. Se estudiará la depuración con mayor detalle en el \RefCapitulo{cap:04-pruebas-y-mejora}. La cadena formateada \Codigo{f"\{valor:.2f\}"} muestra dos cifras decimales, pero no altera el valor almacenado. Diseñar salidas claras es parte de la solución: un número sin etiqueta ni unidad puede ser interpretado incorrectamente.
+
+\section{Estructuras secuenciales: ejecución ordenada de instrucciones}
+
+Una secuencia ejecuta instrucciones una después de otra en el orden establecido. Se utiliza cuando todas las operaciones del proceso deben realizarse sin elegir entre alternativas ni repetir pasos. \citet[cap.~3]{farrell2013} presenta la secuencia, la selección y la repetición como estructuras básicas de la programación estructurada. La dependencia entre operaciones determina el orden correcto de la secuencia.
+
+\Ejemplo{Consumo eléctrico}
+
+Se estima un importe ficticio a partir de dos lecturas de un medidor en kWh y un precio de 75 céntimos por kWh. Se supone que la lectura final es mayor o igual a la inicial.
+
+\Python{ejemplos/03-05-consumo.py}
+
+\textbf{Resultado esperado.} Consumo: 28 kWh; Importe: S/ 21.00.
+
+\input{tablas/36-seguimiento-de-la-secuencia}
+
+El cálculo de importe depende de consumo; invertir estas instrucciones podría utilizar un nombre todavía no definido. Una secuencia no puede resolver por sí sola la condición de una lectura final menor que la inicial: para ello se requiere una decisión.
+
+\section{Estructuras selectivas: decisiones y condiciones lógicas}
+
+Una estructura selectiva determina qué instrucciones ejecutar según el resultado de una condición. La forma simple \Codigo{if} ejecuta un bloque si la condición es verdadera. La forma \Codigo{if–else} dispone de dos alternativas, y la forma \Codigo{if–elif–else} evalúa alternativas ordenadas, ejecutando únicamente la primera condición verdadera o el bloque final. \citet[cap.~4]{farrell2013} desarrolla la relación entre expresiones booleanas, operadores relacionales y selección.
+
+\Ejemplo{Clasificación de existencias}
+
+Una tienda considera agotado un artículo con cero unidades, bajo stock de una a cinco unidades y normal por encima de cinco. Las cantidades negativas son inválidas.
+
+\Python{ejemplos/03-06-inventario.py}
+
+\textbf{Resultado esperado.} Stock bajo.
+
+\input{tablas/37-pruebas-de-limites-de-la-seleccion}
+
+El orden de las condiciones importa: si se comprobara stock <= 5 antes de descartar los valores negativos y el cero, estos podrían clasificarse erróneamente como stock bajo. Cuando varias reglas deben aplicarse independientemente, se utilizan instrucciones \Codigo{if} separadas en lugar de \Codigo{elif}. Las condiciones compuestas permiten expresar rangos con \Codigo{and}, alternativas con \Codigo{or} y negaciones con \Codigo{not}.
+
+Error frecuente. Escribir \Codigo{if} nota >= 0 \Codigo{and} <= 20 no es válido. Use 0 <= nota <= 20 o nota >= 0 \Codigo{and} nota <= 20.
+
+\section{Estructuras repetitivas: ciclos, contadores y acumuladores}
+
+Un ciclo repite un bloque de instrucciones. El ciclo \Codigo{for} de Python recorre los elementos de un iterable, como una lista o un rango; \Codigo{while} repite mientras una condición sea verdadera. Un contador registra cuántas veces ocurre un evento, mientras un acumulador integra valores sucesivos, por ejemplo una suma. \citet[cap.~5]{farrell2013} analiza el control de ciclos y la acumulación de totales, así como errores de inicialización y actualización.
+
+\Ejemplo{Registro de gastos}
+
+Se dispone de cuatro gastos en céntimos. Se calcula su total y se cuenta cuántos superan diez soles.
+
+\Python{ejemplos/03-07-registro-gastos.py}
+
+\textbf{Resultado esperado.} Total: S/ 40.00; Gastos mayores a S/ 10: 2.
+
+\input{tablas/38-prueba-de-escritorio-del-ciclo}
+
+\Ejemplo{Repetición condicionada}
+
+Se muestra una cuenta regresiva. El valor de control disminuye en cada iteración y alcanza la condición de salida.
+
+\Python{ejemplos/03-08-repeticion.py}
+
+\textbf{Resultado esperado.} 3, 2, 1 y Fin (en líneas independientes).
+
+\Codigo{range}(1, 4) genera 1, 2 y 3: su límite superior es excluyente. En \Codigo{while} debe comprobarse que exista una condición de salida alcanzable. Un ciclo puede ejecutar cero veces si la condición inicial es falsa. La instrucción \Codigo{break} permite finalizar anticipadamente y continue pasa a la siguiente iteración; conviene utilizarlas cuando mantienen clara la lógica del proceso.
+
+\section{Modularización de soluciones mediante funciones y procedimientos}
+
+Modularizar significa dividir la implementación en unidades con responsabilidades definidas. Una función recibe argumentos, realiza una tarea y puede devolver un resultado mediante \Codigo{return}. En Python no existe una construcción separada denominada procedimiento: una función que se utiliza principalmente por sus efectos y no devuelve explícitamente un valor retorna \Codigo{None}. \citet[cap.~2]{farrell2013} destaca la abstracción y la reutilización como ventajas de la modularización.
+
+\Ejemplo{Funciones para calcular un pedido}
+
+El cálculo se separa de la presentación. La función subtotal puede utilizarse en diferentes pedidos sin repetir la operación.
+
+\Python[lastline=8]{ejemplos/03-09-funciones.py}
+
+\textbf{Resultado esperado.} Importe: S/ 14.00.
+
+Los parámetros son los nombres definidos en la firma de una función; los argumentos son los valores proporcionados al invocarla. Las variables creadas dentro de una función son normalmente locales. Return permite que el resultado se utilice en otros cálculos; \Codigo{print} solo lo presenta. La interfaz de una función debe indicar qué datos admite y qué resultado devuelve. Evitar dependencias innecesarias de variables globales facilita las pruebas.
+
+\Python[firstline=11]{ejemplos/03-09-funciones.py}
+
+Estas comprobaciones expresan resultados esperados para la función anterior. Si una igualdad es falsa, \Codigo{assert} produce \Codigo{AssertionError} en la ejecución normal. No sustituye la validación de datos de usuario; sirve aquí como introducción a pruebas de unidades pequeñas.
+
+\section{Organización y manipulación básica de colecciones de datos}
+
+Una colección agrupa varios valores. Permite representar conjuntos de registros, recorrerlos y efectuar cálculos sin crear una variable independiente para cada dato. La elección de la colección depende de las operaciones necesarias: conservar orden, acceder por posición, asociar claves o evitar duplicados. En Python existen listas, tuplas, diccionarios y conjuntos; sus propiedades deben distinguirse antes de elegir una estructura.
+
+\input{tablas/39-colecciones-basicas}
+
+\Ejemplo{Lista de calificaciones}
+
+Se incorpora una calificación y se calcula el promedio si la lista contiene elementos. El índice inicial de una lista es cero.
+
+\Python{ejemplos/03-10-lista-notas.py}
+
+\textbf{Resultado esperado.} Promedio: 13.00; Primera nota: 13.
+
+\Ejemplo{Diccionario de inventario}
+
+Se actualiza la cantidad de un artículo por su código y se recorren las parejas de clave y valor. La función get permite establecer un valor por defecto si una clave no existe.
+
+\Python{ejemplos/03-11-diccionario.py}
+
+\textbf{Resultado esperado.} A01 10; A02 3; A03 5; 0 (en líneas independientes).
+
+Modificar una colección mientras se recorre puede provocar errores o resultados inesperados. Cuando se necesita filtrar elementos, suele resultar más claro construir una nueva lista. Las colecciones vacías requieren especial atención: no es posible calcular un promedio sin elementos ni acceder a una posición inexistente. Estas situaciones se incorporan al diseño de pruebas.
+
+\SeccionLibro[Caso práctico]{Caso práctico. Implementación progresiva de una solución}
+
+Control de presupuesto para la compra de materiales. Se retoma el problema desarrollado en los capítulos 1 y 2. Un aula cuenta con un presupuesto de S/ 100 y necesita registrar productos, cantidades y precios unitarios. Se debe calcular el costo total, determinar si la compra cabe en el presupuesto y comunicar el saldo o el exceso. Para garantizar la exactitud del cálculo monetario se trabaja con céntimos enteros.
+
+\input{tablas/40-datos-del-escenario-de-trabajo}
+
+\subsection{Etapa 1. Variables y operaciones}
+
+Con un solo producto se comprueba la fórmula del subtotal y la representación monetaria. Los listados de las etapas 1 a 3 se ejecutan en orden.
+
+\Python[firstline=1,lastline=5]{ejemplos/03-caso-etapas.py}
+
+\subsection{Etapa 2. Decisiones}
+
+Se clasifica el importe mediante una condición. La igualdad corresponde a una compra que consume todo el presupuesto, sin exceso.
+
+\Python[firstline=7,lastline=10]{ejemplos/03-caso-etapas.py}
+
+\subsection{Etapa 3. Ciclos y colecciones}
+
+Se representan los materiales como registros y se acumulan sus subtotales. Esta versión supone datos válidos.
+
+\Python[firstline=12,lastline=18]{ejemplos/03-caso-etapas.py}
+
+\subsection{Etapa 4. Funciones y programa integrado}
+
+Se encapsulan las operaciones y se establecen reglas explícitas: presupuesto entero no negativo, nombres no vacíos, cantidades enteras positivas y precios enteros no negativos. Una lista vacía se acepta como compra sin artículos. El informe no modifica los datos originales. El siguiente programa se ejecuta de forma independiente.
+
+\Python*{ejemplos/03-caso-integrado.py}
+
+La condición final permite ejecutar main cuando se inicia el archivo directamente, sin lanzar el informe al importar sus funciones desde otro archivo. La función \Codigo{divmod} devuelve cociente entero y resto. El formato monetario mantiene exactitud sin convertir el importe a punto flotante. Los registros tienen una estructura prevista de tres campos; la validación de estructuras arbitrarias puede ampliarse en el capítulo siguiente.
+
+\subsection{Etapa 5. Ejecución y comprobación}
+
+\Salida{03-caso-integrado.txt}
+
+\input{tablas/41-casos-de-prueba-del-programa}
+
+El programa conserva las reglas del algoritmo original y permite incorporar nuevos materiales sin cambiar la lógica de acumulación. Como mejora posterior se propone solicitar los registros por consola y separar la validación de entradas externas de la lógica de negocio. La corrección se comprueba contrastando los resultados con el cálculo manual y ejecutando casos representativos, límite e inválidos.
+
+\SeccionLibro{Cierre del capítulo}
+
+\subsection{Resumen}
+
+La programación convierte algoritmos en instrucciones ejecutables. Las variables, constantes y tipos representan los datos; los operadores expresan cálculos y condiciones; la entrada y salida conectan la solución con el usuario. Las estructuras secuenciales, selectivas y repetitivas organizan la ejecución. Las funciones permiten dividir responsabilidades, reutilizar procedimientos y comprobar resultados de forma aislada, mientras las colecciones agrupan datos y hacen posible procesar cantidades variables de información. El caso integrador mostró cómo construir una solución progresivamente y contrastarla con su diseño inicial.
+
+\subsection{Términos clave}
+
+\input{tablas/42-glosario-del-capitulo-3}
+
+\subsection{Preguntas de comprensión}
+
+\begin{enumerate}
+\item ¿En qué se diferencia un algoritmo de un programa?
+\item ¿Por qué Python distingue un entero de una cadena de texto?
+\item ¿Qué diferencia existe entre = y ==?
+\item ¿Cómo influye la precedencia en una expresión?
+\item ¿Por qué \Codigo{input()} requiere conversiones para realizar cálculos?
+\item ¿Cuándo es suficiente una estructura secuencial?
+\item ¿Qué diferencia existe entre \Codigo{if} independientes e \Codigo{if–elif–else}?
+\item ¿Cómo se garantiza que un ciclo \Codigo{while} termine?
+\item ¿En qué se diferencian un contador y un acumulador?
+\item ¿Qué distingue \Codigo{return} de \Codigo{print}?
+\item ¿Cuándo conviene elegir un diccionario en lugar de una lista?
+\item ¿Por qué deben probarse colecciones vacías y valores límite?
+\end{enumerate}
+
+\subsection{Ejercicios de construcción de programas}
+
+\begin{enumerate}
+\item Conversión de unidades. Lea segundos enteros no negativos y muestre horas, minutos y segundos. Pruebe 0, 59, 60 y 3601.
+\item Calificaciones. Solicite tres notas entre 0 y 20, calcule su promedio y determine si alcanza un umbral ficticio de 11. Rechace entradas inválidas.
+\item Inventario. Lea existencias y unidades solicitadas; compruebe disponibilidad y calcule las existencias restantes. Pruebe la igualdad y cantidades negativas.
+\item Registro de consumo. Recorra siete consumos diarios, calcule total, promedio y máximo. Defina qué ocurre ante datos inválidos.
+\item Contador de asistencia. Recorra una lista de marcas P y A; calcule presentes, ausentes y porcentaje de asistencia. Trate la lista vacía.
+\item Funciones. Defina una función que calcule el importe de un pedido en céntimos y otra que lo formatee en soles. Compruebe al menos tres entradas.
+\item Colecciones. Cree un diccionario de productos y cantidades. Permita actualizar existencias y consultar un código inexistente sin provocar un error.
+\item Filtrado. Construya una nueva lista con las calificaciones aprobatorias de una lista original, sin modificar esta última.
+\end{enumerate}
+
+\subsection{Desafíos de programación progresiva}
+
+\textbf{Desafío 1.} Biblioteca escolar. Implemente primero el registro de un préstamo, luego una decisión de vencimiento basada en días transcurridos, después un ciclo para varios préstamos y finalmente funciones para calcular y presentar un informe. Incluya pruebas de cero días y del límite de préstamo.
+
+\textbf{Desafío 2.} Monitoreo ambiental. Registre mediciones de temperatura válidas, calcule promedio y máximo, cuente las que superan un umbral configurable y encapsule el procesamiento en funciones. Establezca una política para la lista vacía. Compare los resultados con una tabla manual.
+
+\textbf{Desafío 3.} Control de presupuesto ampliado. Extienda el caso integrador para leer materiales desde la consola, evitar códigos duplicados y mostrar el producto de mayor subtotal. Defina las reglas de desempate y las condiciones de salida. Entregue código, modelo EPS, tabla de pruebas y una breve explicación de las mejoras.
+
+Criterios de evaluación sugeridos: correspondencia con el algoritmo (25 \%), corrección de resultados (30 \%), organización y legibilidad (20 \%), validación y pruebas (20 \%), documentación (5 \%).
+
+\subsection{Fuente de consulta del capítulo}
+
+La organización conceptual se apoya en los capítulos 2 a 5 de \citet{farrell2013}.
+
+Los ejemplos de Python, las tablas, las actividades y el caso práctico son adaptaciones didácticas originales. La bibliografía complementaria queda pendiente de consulta directa.

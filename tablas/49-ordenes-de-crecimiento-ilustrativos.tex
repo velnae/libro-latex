@@ -1,0 +1,25 @@
+\begin{tablalibro}{4}{L{0.20}L{0.44}R{0.17}R{0.19}}
+\caption{Órdenes de crecimiento ilustrativos}\label{tab:ordenes-de-crecimiento-ilustrativos}\\
+\toprule
+\rowcolor{Papel}
+\CabeceraTabla{Orden} & \CabeceraTabla{Ejemplo} & \CabeceraTabla{n = 10} & \CabeceraTabla{n = 100} \\
+\midrule
+\endfirsthead
+\SigueTabla{4}
+\toprule
+\rowcolor{Papel}
+\CabeceraTabla{Orden} & \CabeceraTabla{Ejemplo} & \CabeceraTabla{n = 10} & \CabeceraTabla{n = 100} \\
+\midrule
+\endhead
+\midrule
+\ContinuaTabla{4}
+\endfoot
+\bottomrule
+\multicolumn{4}{@{}p{\linewidth}@{}}{\NotaLibro{Elaboración propia.}}\\
+\endlastfoot
+
+O(1) & Acceso por índice & 1 & 1 \\
+O(log n) & Búsqueda binaria (cota ilustrativa) & 4 & 7 \\
+O(n) & Recorrido completo & 10 & 100 \\
+O(n²) & Comparar todos los pares ordenados & 100 & 10 000 \\
+\end{tablalibro}

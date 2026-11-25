@@ -1,0 +1,23 @@
+INICIO
+    LEER B, n
+    SI B < 0 O n < 0 ENTONCES
+        MOSTRAR "Datos iniciales inválidos"
+        TERMINAR
+    FIN SI
+    total ← 0
+    PARA i ← 1 HASTA n HACER
+        LEER q, p
+        SI q <= 0 O p < 0 ENTONCES
+            MOSTRAR "Producto inválido"
+            TERMINAR
+        FIN SI
+        total ← total + q * p
+    FIN PARA
+    saldo ← B - total
+    SI saldo >= 0 ENTONCES
+        estado ← "Viable"
+    SINO
+        estado ← "No viable"
+    FIN SI
+    MOSTRAR total, saldo, estado
+FIN

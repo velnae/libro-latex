@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+  \node[diagrama bloque,minimum width=31mm] (informe) at (0,0) {Generar informe};
+  \node[diagrama bloque,minimum width=28mm] (leer) at (-4.65,-1.8) {Leer registros};
+  \node[diagrama bloque,minimum width=23mm] (validar) at (-1.55,-1.8) {Validar};
+  \node[diagrama bloque,minimum width=23mm] (calcular) at (1.55,-1.8) {Calcular};
+  \node[diagrama bloque,minimum width=26mm] (presentar) at (4.65,-1.8) {Presentar};
+  \node[diagrama bloque,minimum width=31mm] (contar) at (-.45,-3.5) {Contar presentes};
+  \node[diagrama bloque,minimum width=35mm] (porcentaje) at (3.65,-3.5) {Obtener porcentaje};
+  \coordinate (nodo) at (0,-.9);
+  \draw[diagrama union] (informe.south) -- (nodo);
+  \draw[diagrama union] (leer.north |- nodo) -- (presentar.north |- nodo);
+  \foreach \destino in {leer,validar,calcular,presentar}
+    \draw[diagrama union] (\destino.north |- nodo) -- (\destino.north);
+  \coordinate (c) at (1.55,-2.65);
+  \draw[diagrama union] (calcular.south) -- (c);
+  \draw[diagrama union] (contar.north |- c) -- (porcentaje.north |- c);
+  \foreach \destino in {contar,porcentaje}
+    \draw[diagrama union] (\destino.north |- c) -- (\destino.north);
+\end{tikzpicture}

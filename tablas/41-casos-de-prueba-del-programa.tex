@@ -1,0 +1,27 @@
+\begin{tablalibro}{3}{R{0.24}L{0.36}L{0.40}}
+\caption{Casos de prueba del programa}\label{tab:casos-de-prueba-del-programa}\\
+\toprule
+\rowcolor{Papel}
+\CabeceraTabla{Presupuesto} & \CabeceraTabla{Materiales (cantidad × precio)} & \CabeceraTabla{Resultado esperado} \\
+\midrule
+\endfirsthead
+\SigueTabla{3}
+\toprule
+\rowcolor{Papel}
+\CabeceraTabla{Presupuesto} & \CabeceraTabla{Materiales (cantidad × precio)} & \CabeceraTabla{Resultado esperado} \\
+\midrule
+\endhead
+\midrule
+\ContinuaTabla{3}
+\endfoot
+\bottomrule
+\multicolumn{3}{@{}p{\linewidth}@{}}{\NotaLibro{Elaboración propia.}}\\
+\endlastfoot
+
+10000 & 5×450; 10×120; 4×300 & Viable; saldo 5350 \\
+4650 & Mismos materiales & Viable; saldo 0 \\
+4000 & Mismos materiales & Insuficiente; exceso 650 \\
+10000 & Lista vacía & Viable; saldo 10000 \\
+10000 & 0×450 & Error: cantidad inválida \\
+-1 & Lista vacía & Error: presupuesto inválido \\
+\end{tablalibro}

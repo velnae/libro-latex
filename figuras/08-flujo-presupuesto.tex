@@ -1,0 +1,39 @@
+\begin{tikzpicture}
+  \node[diagrama terminal] (inicio) at (0,0) {Inicio};
+  \node[diagrama datos,minimum width=32mm] (entrada) at (0,-1.12) {Leer \(B, n\)};
+  \node[diagrama decision] (validar) at (0,-2.57) {¿\(B<0\) o \(n<0\)?};
+  \node[diagrama datos] (error) at (-4.8,-4.05) {Mostrar error};
+  \node[diagrama proceso] (preparar) at (0,-4.05) {\(\mathrm{total} \gets 0,\ i \gets 1\)};
+  \node[diagrama decision] (ciclo) at (0,-5.50) {¿\(i \leq n\)?};
+  \node[diagrama datos] (producto) at (0,-6.88) {Leer \(q, p\)};
+  \node[diagrama decision] (validarprod) at (0,-8.28) {¿\(q\leq 0\) o \(p<0\)?};
+  \node[diagrama proceso] (acumular) at (0,-9.74)
+    {\(\mathrm{total} \gets \mathrm{total}+qp\)\\[-.1em]\(i \gets i+1\)};
+  \node[diagrama proceso] (saldo) at (4.65,-5.5) {\(\mathrm{saldo} \gets B-\mathrm{total}\)};
+  \node[diagrama decision] (decision) at (4.65,-7.09) {¿\(\mathrm{saldo}\geq 0\)?};
+  \node[diagrama proceso] (viable) at (3.44,-8.55) {Viable};
+  \node[diagrama proceso] (noviable) at (6.06,-8.55) {No viable};
+  \node[diagrama datos] (salida) at (4.65,-10.03) {Mostrar total,\\ saldo y estado};
+  \node[diagrama terminal] (fin) at (4.65,-11.40) {Fin};
+  \draw[diagrama flecha] (inicio) -- (entrada);
+  \draw[diagrama flecha] (entrada) -- (validar);
+  \draw[diagrama flecha] (validar.west) -| node[diagrama rama,pos=.27,above] {Sí} (error.north);
+  \draw[diagrama flecha] (validar.south) -- node[diagrama rama,right] {No} (preparar.north);
+  \draw[diagrama flecha] (preparar) -- (ciclo);
+  \draw[diagrama flecha] (ciclo.south) -- node[diagrama rama,right] {Sí} (producto.north);
+  \draw[diagrama flecha] (ciclo.east) -- node[diagrama rama,above] {No} (saldo.west);
+  \draw[diagrama flecha] (producto) -- (validarprod);
+  \draw[diagrama flecha] (validarprod.west) -- node[diagrama rama,above] {Sí}
+    (-3.45,-8.28) |- (error.east);
+  \draw[diagrama flecha] (validarprod.south) -- node[diagrama rama,right] {No} (acumular.north);
+  \draw[diagrama flecha] (acumular.east) -- (1.94,-9.74)
+    -- (1.94,-6.06) -- (1.0,-6.06)
+    -- (ciclo.south east);
+  \draw[diagrama flecha] (saldo) -- (decision);
+  \draw[diagrama flecha] (decision.south west) -- node[diagrama rama,left] {Sí} (viable.north);
+  \draw[diagrama flecha] (decision.south east) -- node[diagrama rama,right] {No} (noviable.north);
+  \draw[diagrama flecha] (viable.south) |- (salida.west);
+  \draw[diagrama flecha] (noviable.south) |- (salida.east);
+  \draw[diagrama flecha] (salida) -- (fin);
+  \draw[diagrama flecha] (error.south) |- (fin.west);
+\end{tikzpicture}

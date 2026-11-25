@@ -1,0 +1,25 @@
+\begin{tablalibro}{3}{L{0.22}L{0.48}L{0.30}}
+\caption{Colecciones básicas}\label{tab:colecciones-basicas}\\
+\toprule
+\rowcolor{Papel}
+\CabeceraTabla{Colección} & \CabeceraTabla{Propiedades} & \CabeceraTabla{Ejemplo} \\
+\midrule
+\endfirsthead
+\SigueTabla{3}
+\toprule
+\rowcolor{Papel}
+\CabeceraTabla{Colección} & \CabeceraTabla{Propiedades} & \CabeceraTabla{Ejemplo} \\
+\midrule
+\endhead
+\midrule
+\ContinuaTabla{3}
+\endfoot
+\bottomrule
+\multicolumn{3}{@{}p{\linewidth}@{}}{\NotaLibro{Elaboración propia.}}\\
+\endlastfoot
+
+Lista & Ordenada, modificable, admite repetidos & \Codigo{[12, 8, 12]} \\
+Tupla & Ordenada, estructura no modificable & \Codigo{(12, 8)} \\
+Diccionario & Asocia claves únicas a valores & \Codigo{\{"A01": 12\}} \\
+Conjunto & Elementos únicos, sin orden garantizado & \Codigo{\{12, 8\}} \\
+\end{tablalibro}

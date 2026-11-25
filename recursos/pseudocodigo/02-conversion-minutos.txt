@@ -1,0 +1,6 @@
+INICIO
+    LEER minutos
+    horas ← minutos DIV 60
+    resto ← minutos MOD 60
+    MOSTRAR horas, resto
+FIN

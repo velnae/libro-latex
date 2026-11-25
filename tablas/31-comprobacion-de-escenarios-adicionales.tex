@@ -1,0 +1,27 @@
+\begin{tablalibro}{2}{L{0.46}L{0.54}}
+\caption{Comprobación de escenarios adicionales}\label{tab:comprobacion-de-escenarios-adicionales}\\
+\toprule
+\rowcolor{Papel}
+\CabeceraTabla{Presupuesto y productos} & \CabeceraTabla{Resultado esperado} \\
+\midrule
+\endfirsthead
+\SigueTabla{2}
+\toprule
+\rowcolor{Papel}
+\CabeceraTabla{Presupuesto y productos} & \CabeceraTabla{Resultado esperado} \\
+\midrule
+\endhead
+\midrule
+\ContinuaTabla{2}
+\endfoot
+\bottomrule
+\multicolumn{2}{@{}p{\linewidth}@{}}{\NotaLibro{Elaboración propia.}}\\
+\endlastfoot
+
+B=9500; mismos productos & Total 9500; saldo 0; viable. \\
+B=9000; mismos productos & Total 9500; saldo \ensuremath{-}500; no viable. \\
+B=0; n=1; q=2, p=0 & Total 0; saldo 0; viable. \\
+B=15000; n=0 & Total 0; saldo 15 000. Compra viable. \\
+B=15000; n=1; q=0, p=800 & Error de producto. \\
+B=15000; n=1; q=2, p=\ensuremath{-}1 & Error de producto. \\
+\end{tablalibro}

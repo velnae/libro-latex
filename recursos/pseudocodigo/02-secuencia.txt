@@ -1,0 +1,5 @@
+INICIO
+    LEER base, altura
+    area ← base * altura
+    MOSTRAR area
+FIN

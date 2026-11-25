@@ -1,0 +1,26 @@
+\begin{tablalibro}{2}{L{0.31}L{0.69}}
+\caption{Refinamiento de la solución de asistencia}\label{tab:refinamiento-de-la-solucion-de-asistencia}\\
+\toprule
+\rowcolor{Papel}
+\CabeceraTabla{Nivel} & \CabeceraTabla{Acciones} \\
+\midrule
+\endfirsthead
+\SigueTabla{2}
+\toprule
+\rowcolor{Papel}
+\CabeceraTabla{Nivel} & \CabeceraTabla{Acciones} \\
+\midrule
+\endhead
+\midrule
+\ContinuaTabla{2}
+\endfoot
+\bottomrule
+\multicolumn{2}{@{}p{\linewidth}@{}}{\NotaLibro{Elaboración propia.}}\\
+\endlastfoot
+
+0 & Generar informe de asistencia. \\
+1 & Leer registros; validar; calcular; presentar resultado. \\
+2: validar & Comprobar que cada registro sea P o A y que la lista no esté vacía. \\
+2: calcular & Inicializar presentes en cero; recorrer registros; incrementar si es P; dividir presentes entre total y multiplicar por 100. \\
+2: presentar & Mostrar cantidad de sesiones, presentes y porcentaje. \\
+\end{tablalibro}

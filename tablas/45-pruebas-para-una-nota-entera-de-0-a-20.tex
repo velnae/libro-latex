@@ -1,0 +1,26 @@
+\begin{tablalibro}{3}{L{0.25}L{0.29}L{0.46}}
+\caption{Pruebas para una nota entera de 0 a 20}\label{tab:pruebas-para-una-nota-entera-de-0-a-20}\\
+\toprule
+\rowcolor{Papel}
+\CabeceraTabla{Tipo} & \CabeceraTabla{Entrada} & \CabeceraTabla{Resultado esperado} \\
+\midrule
+\endfirsthead
+\SigueTabla{3}
+\toprule
+\rowcolor{Papel}
+\CabeceraTabla{Tipo} & \CabeceraTabla{Entrada} & \CabeceraTabla{Resultado esperado} \\
+\midrule
+\endhead
+\midrule
+\ContinuaTabla{3}
+\endfoot
+\bottomrule
+\multicolumn{3}{@{}p{\linewidth}@{}}{\NotaLibro{Elaboración propia.}}\\
+\endlastfoot
+
+Normal & 14 & Aceptar \\
+Límite inferior & 0 & Aceptar \\
+Límite superior & \Codigo{20} & Aceptar \\
+Fuera del límite & \Codigo{\ensuremath{-}1 y 21} & Rechazar cada valor \\
+Tipo inválido & \Codigo{"catorce", 12.5, True} & Rechazar cada valor \\
+\end{tablalibro}

@@ -1,0 +1,25 @@
+\begin{tablalibro}{3}{L{0.28}L{0.35}L{0.37}}
+\caption{Casos de comprobación del promedio ponderado}\label{tab:casos-de-comprobacion-del-promedio-ponderado}\\
+\toprule
+\rowcolor{Papel}
+\CabeceraTabla{Notas} & \CabeceraTabla{Resultado esperado} & \CabeceraTabla{Finalidad} \\
+\midrule
+\endfirsthead
+\SigueTabla{3}
+\toprule
+\rowcolor{Papel}
+\CabeceraTabla{Notas} & \CabeceraTabla{Resultado esperado} & \CabeceraTabla{Finalidad} \\
+\midrule
+\endhead
+\midrule
+\ContinuaTabla{3}
+\endfoot
+\bottomrule
+\multicolumn{3}{@{}p{\linewidth}@{}}{\NotaLibro{Elaboración propia.}}\\
+\endlastfoot
+
+14, 12, 16 & 14,2; aprobado & Caso habitual \\
+11, 11, 11 & 11; aprobado & Límite de aprobación \\
+10, 10, 10 & 10; desaprobado & Caso inferior al límite \\
+21, 12, 16 & Mensaje de error & Entrada fuera de rango \\
+\end{tablalibro}

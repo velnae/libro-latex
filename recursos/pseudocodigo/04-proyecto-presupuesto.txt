@@ -1,0 +1,12 @@
+ALGORITMO ControlPresupuesto
+    Validar presupuesto
+    total ← 0
+    PARA CADA material EN materiales HACER
+        Validar nombre no vacío, cantidad entera positiva y precio no negativo
+        importe ← cantidad * precio
+        total ← total + importe
+    FIN PARA
+    saldo ← presupuesto - total
+    viable ← saldo >= 0
+    Mostrar total, saldo y viabilidad
+FIN ALGORITMO

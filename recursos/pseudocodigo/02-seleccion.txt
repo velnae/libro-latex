@@ -1,0 +1,9 @@
+INICIO
+    LEER saldo, importe
+    SI importe > 0 Y importe <= saldo ENTONCES
+        saldo ← saldo - importe
+        MOSTRAR saldo
+    SINO
+        MOSTRAR "Operación no permitida"
+    FIN SI
+FIN

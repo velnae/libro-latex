@@ -18,27 +18,21 @@
 ]
 
 \usepackage{babel}
-\IfFileExists{spanish.ldf}{%
-  \babelprovide[main,import=es]{spanish}%
-}{%
-  \babelprovide[main,import=es]{spanish}%
-}
+\babelprovide[main,import=es]{spanish}
 \setlocalecaption{spanish}{contents}{Índice general}
-\setlocalecaption{spanish}{listtable}{Índice de tablas}
-\setlocalecaption{spanish}{listfigure}{Índice de figuras}
 \setlocalecaption{spanish}{table}{Tabla}
 \setlocalecaption{spanish}{appendix}{Anexo}
 
 \usepackage{amsmath}
 \usepackage{unicode-math}
 \setmathfont{latinmodern-math.otf}
-\usepackage[left=27mm,right=26mm,top=25mm,bottom=27mm,headheight=15pt]{geometry}
+\usepackage[left=27mm,right=26mm,top=24mm,bottom=25mm,headheight=20pt]{geometry}
 \usepackage[protrusion=true,expansion=false]{microtype}
-\usepackage{ragged2e}
-\linespread{1.07}
+\linespread{1.045}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{.48em plus .12em minus .08em}
-\setlength{\emergencystretch}{1.3em}
+\setlength{\parskip}{.41em plus .1em minus .08em}
+\setlength{\emergencystretch}{2.5em}
+\tolerance=1800
 \clubpenalty=7500
 \widowpenalty=7500
 \raggedbottom
@@ -61,29 +55,29 @@
 \newcommand{\EtiquetaCapitulo}{%
   \sffamily\bfseries\small\color{Verde}\MakeUppercase{\chaptertitlename}\enspace\thechapter}
 \titleformat{\chapter}[display]
-  {\sffamily\bfseries\Huge\color{Azul}\RaggedRight}
+  {\sffamily\bfseries\Huge\color{Azul}\raggedright}
   {\EtiquetaCapitulo}{.7ex}{}[\vspace{.6ex}{\color{Linea}\titlerule[.65pt]}]
 \titleformat{name=\chapter,numberless}[display]
-  {\sffamily\bfseries\Huge\color{Azul}\RaggedRight}
+  {\sffamily\bfseries\Huge\color{Azul}\raggedright}
   {}{0pt}{}[\vspace{.6ex}{\color{Linea}\titlerule[.65pt]}]
-\titlespacing*{\chapter}{0pt}{1.3ex}{2.2ex}
+\titlespacing*{\chapter}{0pt}{0pt}{2.05ex}
 \titleformat{\section}
-  {\sffamily\bfseries\Large\color{Azul}\RaggedRight}
+  {\sffamily\bfseries\Large\color{Azul}\raggedright}
   {\textcolor{Verde}{\thesection}}{.7em}{}
 \titlespacing*{\section}{0pt}{2.7ex plus .4ex}{.9ex}
 \titleformat{\subsection}
-  {\sffamily\bfseries\large\color{Azul}\RaggedRight}
+  {\sffamily\bfseries\large\color{Azul}\raggedright}
   {}{0pt}{}
 \titlespacing*{\subsection}{0pt}{1.9ex plus .4ex}{.55ex}
 
 \newcommand{\NotaParte}{}
+\newcommand{\DetalleParte}{%
+  \par\vspace{.8ex}{\color{Verde}\rule{19mm}{1.1pt}}\par
+  \vspace{1.6ex}\normalfont\Large\color{Gris}\raggedright\NotaParte}
 \titleformat{\part}[display]
-  {\sffamily\bfseries\fontsize{38}{43}\selectfont\color{Azul}\RaggedRight}
+  {\sffamily\bfseries\fontsize{35}{40}\selectfont\color{Azul}\raggedright}
   {\color{Verde}\normalfont\sffamily\bfseries\large\MakeUppercase{\partname}\enspace\thepart}
-  {1.5ex}{}[%
-    \par\vspace{.8ex}{\color{Verde}\rule{19mm}{1.1pt}}\par
-    \vspace{1.6ex}%
-    \normalfont\Large\color{Gris}\NotaParte]
+  {1.5ex}{}[\DetalleParte]
 \newcommand{\ParteLibro}[2]{\renewcommand{\NotaParte}{#2}\part{#1}}
 
 \pagestyle{fancy}
@@ -99,7 +93,7 @@
   \renewcommand{\headrule}{}}
 
 \usepackage{enumitem}
-\setlist{topsep=.28em,itemsep=.2em,parsep=0pt,partopsep=0pt,leftmargin=1.65em}
+\setlist{topsep=.28em,itemsep=.18em,parsep=0pt,partopsep=0pt,leftmargin=1.65em}
 \usepackage{needspace}
 \usepackage[most]{tcolorbox}
 \newtcolorbox{resultados}[1][Resultados de aprendizaje]{
@@ -113,8 +107,8 @@
 % Cuadros, figuras, notas y referencias
 \usepackage{graphicx}
 \usepackage{caption}
-\DeclareCaptionFont{rótulo}{\sffamily\bfseries\color{Azul}}
-\captionsetup{font=small,labelfont=rótulo,labelsep=period,
+\DeclareCaptionFont{rotulo}{\sffamily\bfseries\color{Azul}}
+\captionsetup{font=small,labelfont=rotulo,labelsep=period,
   textfont=bf,justification=raggedright,singlelinecheck=false}
 \captionsetup[table]{position=above,skip=5pt}
 \captionsetup[figure]{position=below,skip=7pt}
@@ -124,19 +118,19 @@
 \usepackage{booktabs}
 \usepackage{longtable}
 \newlength{\AnchoTabla}
-\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1\AnchoTabla}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1\AnchoTabla}}
 \newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1\AnchoTabla}}
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1\AnchoTabla}}
 \newenvironment{tablalibro}[2]{%
   \par\needspace{5.3\baselineskip}\begingroup\small
   \setlength{\tabcolsep}{6pt}%
-  \setlength{\AnchoTabla}{\dimexpr\linewidth-#1\tabcolsep-#1\tabcolsep+2\tabcolsep\relax}%
-  \setlength{\LTleft}{0pt}\setlength{\LTright}{0pt}%
+  \setlength{\AnchoTabla}{\dimexpr\linewidth-#1\tabcolsep-#1\tabcolsep\relax}%
+  \setlength{\LTleft}{0pt}\setlength{\LTright}{\fill}%
   \setlength{\LTcapwidth}{\linewidth}%
   \setlength{\LTpre}{.55em}\setlength{\LTpost}{.8em}%
-  \renewcommand{\arraystretch}{1.24}%
+  \renewcommand{\arraystretch}{1.21}%
   \arrayrulecolor{Linea}%
-  \begin{longtable}{@{}#2@{}}%
+  \begin{longtable}{#2}%
 }{\end{longtable}\endgroup}
 \newcommand{\CabeceraTabla}[1]{\sffamily\bfseries\color{Azul}#1}
 \newcommand{\NotaLibro}[1]{{\footnotesize\color{Gris}\textit{Nota.} #1}}
@@ -166,11 +160,12 @@
 \NewDocumentCommand{\FiguraLibro}{m m m m}{%
   \par\addvspace{.8em}%
   \noindent\begin{minipage}{\linewidth}
+    \captionsetup{type=figure}%
     \centering
     \input{figuras/#1}\par
-    \captionof{figure}{#2}\label{#3}%
+    \caption{#2}\label{#3}%
     \if\relax\detokenize{#4}\relax\else
-      \RaggedRight\NotaLibro{#4}\par
+      \raggedright\NotaLibro{#4}\par
     \fi
   \end{minipage}\par\addvspace{.8em}%
 }
@@ -190,15 +185,30 @@
     {Á}{{Á}}1 {É}{{É}}1 {Í}{{Í}}1 {Ó}{{Ó}}1 {Ú}{{Ú}}1
     {ñ}{{ñ}}1 {Ñ}{{Ñ}}1 {ü}{{ü}}1 {²}{{²}}1 {←}{{$\leftarrow$}}1
 }
-\NewDocumentCommand{\Python}{O{} m}{\lstinputlisting[style=libro,language=Python,#1]{recursos/#2}}
-\NewDocumentCommand{\Pseudocodigo}{m}{\lstinputlisting[style=libro]{recursos/pseudocodigo/#1}}
-\NewDocumentCommand{\Salida}{m}{\lstinputlisting[style=libro]{recursos/salidas/#1}}
+\newcommand{\ListadoCorto}[2]{%
+  \par\addvspace{.65em}%
+  \noindent\begin{minipage}{\linewidth}
+    \lstinputlisting[style=libro,aboveskip=0pt,belowskip=0pt,#1]{recursos/#2}%
+  \end{minipage}\par\addvspace{.65em}}
+\NewDocumentCommand{\Python}{s O{} m}{%
+  \IfBooleanTF{#1}{\lstinputlisting[style=libro,language=Python,#2]{recursos/#3}}%
+    {\ListadoCorto{language=Python,#2}{#3}}}
+\newcommand{\Pseudocodigo}[1]{\ListadoCorto{}{pseudocodigo/#1}}
+\newcommand{\Salida}[1]{\ListadoCorto{}{salidas/#1}}
 \newcommand{\Codigo}[1]{\texttt{#1}}
 
 \newcommand{\CapituloFinal}[1]{%
   \chapter*{#1}\markboth{#1}{}\addcontentsline{toc}{chapter}{#1}}
+\makeatletter
+\newcommand{\IndiceLibro}[1]{{\setlength{\parskip}{0pt}\@starttoc{#1}}}
+\renewcommand{\tableofcontents}{%
+  \chapter*{\contentsname}\markboth{\contentsname}{}%
+  \pdfbookmark[0]{Índice general}{indice-general}\IndiceLibro{toc}}
+\renewcommand{\listoftables}{\CapituloFinal{Índice de tablas}\IndiceLibro{lot}}
+\renewcommand{\listoffigures}{\CapituloFinal{Índice de figuras}\IndiceLibro{lof}}
+\makeatother
 \newcommand{\SeccionLibro}[2][]{%
-  \section*{#2}%
+  \section*{#2}\phantomsection
   \if\relax\detokenize{#1}\relax
     \addcontentsline{toc}{section}{#2}%
   \else
@@ -222,4 +232,4 @@
   pdfsubject={\TipoManuscrito},
   pdflang={es-PE}
 }
-\AtBeginDocument{\color{Tinta}}
+\AtBeginDocument{\color{Tinta}\raggedright}

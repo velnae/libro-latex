@@ -1,0 +1,8 @@
+INICIO
+    total ← 0
+    PARA i ← 1 HASTA 3 HACER
+        LEER gasto
+        total ← total + gasto
+    FIN PARA
+    MOSTRAR total
+FIN
